@@ -1,3 +1,24 @@
+## 開発方針
+
+### ブランチ運用
+
+- 原則 (GitHub-Flow)[https://gist.github.com/Gab-km/3705015] を意識する
+- master ブランチは deploy 可能な物のみあげる
+- 開発する場合は `feature/機能名` ブランチを作成してそちらで作業する
+- 修正する場合は `fix/機能名` ブランチを作成する
+- master ブランチで緊急を要する修正をする場合のみ master から `hotfix/` ブランチを切ることができる
+
+### プルリクについて
+
+- 基本的にはテンプレートに沿って作成する
+- テンプレートに記載することがない場合は空欄でも良い
+
+### nodejs のバージョン
+
+- [Nodejs は v14.18.2 を使用する](https://nodejs.org/ja/blog/release/v14.18.2/
+  - vercel が 14.x サポートなので 14 系の LTS
+- こだわりがない場合は原則 nodenv を使用する
+
 ## npm scripts
 
 | alias    | 実行内容                      | command                                                                                       |
@@ -17,7 +38,7 @@
 
 [Conventional Commits](https://www.conventionalcommits.org/ja/v1.0.0/) の規則に沿って commit message を記述してください。
 commit-lint を導入しているため、規則に沿わない場合エラーになります。
-重要なアプデは
+重要なコミットは prefix に ! をつけます。
 
 | prefix   | 内容                                       |
 | -------- | ------------------------------------------ |
