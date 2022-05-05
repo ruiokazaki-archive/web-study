@@ -1,0 +1,18 @@
+{
+  "nextpage components": {
+    "scope": "typescriptreact",
+    "prefix": "next",
+    "body": [
+      "import type { NextPage } from 'next';\n",
+      "const $TM_FILENAME_BASE: NextPage = () => {",
+      "  return (",
+      "    <>",
+      "      ${1:<p>hoge</p>}",
+      "    </>",
+      "  );",
+      "};\n",
+      "export default $TM_FILENAME_BASE;"
+    ],
+    "description": "nextpage components"
+  }
+}

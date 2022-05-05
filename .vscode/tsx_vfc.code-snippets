@@ -1,0 +1,18 @@
+{
+  "fc components": {
+    "scope": "typescriptreact",
+    "prefix": "react",
+    "body": [
+      "import { VFC } from 'react';\n",
+      "const $TM_FILENAME_BASE: VFC = () => {",
+      "  return (",
+      "    <>",
+      "      ${1:<p>hoge</p>}",
+      "    </>",
+      "  );",
+      "};\n",
+      "export default $TM_FILENAME_BASE;"
+    ],
+    "description": "vfc"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "nextpage getStaticProps components": {
+    "scope": "typescriptreact",
+    "prefix": "next",
+    "body": [
+      "import type { NextPage } from 'next';\n",
+      "type Props = {",
+      "};\n",
+      "const $TM_FILENAME_BASE: NextPage<Props> = ({  }) => {",
+      " return (",
+      "  <>",
+      "   ${1:<p>hoge</p>}",
+      "  </>",
+      " );",
+      "};\n",
+      "export const getStaticProps = async () => {",
+      " return {",
+      "  props: {",
+      "  },",
+      " };",
+      "};\n",
+      "export default $TM_FILENAME_BASE;"
+    ],
+    "description": "nextpage getStaticProps components"
+  }
+}

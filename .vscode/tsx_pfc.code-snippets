@@ -1,0 +1,21 @@
+{
+  "props fc components": {
+    "scope": "typescriptreact",
+    "prefix": "react",
+    "body": [
+      "import { VFC } from 'react';\n",
+      "type Props = {",
+      "  ${1:}",
+      "};",
+      "const $TM_FILENAME_BASE: VFC<Props> = ({}) => {",
+      "  return (",
+      "    <>",
+      "      ${2:<p>hoge</p>}",
+      "    </>",
+      "  );",
+      "};\n",
+      "export default $TM_FILENAME_BASE;"
+    ],
+    "description": "props fc"
+  }
+}
