@@ -1,11 +1,20 @@
 import { MicroCMSObject } from 'types/microCMS';
 import { Tag } from 'types/tag';
 
+export type Category = 'engineer' | 'design' | 'column';
+export type Author =
+  | 'okazaki'
+  | 'kobayashi'
+  | 'satou'
+  | 'kinoshita'
+  | 'ryou'
+  | 'suda';
+
 export type Blog = MicroCMSObject & {
   title: string;
-  author: ('okazaki' | 'kobayashi' | 'satou' | 'kinoshita' | 'ryou' | 'suda')[];
+  author: Author[];
   recommend: boolean;
-  category: ('engineer' | 'design' | 'column')[];
+  category: Category[];
   tags: Tag[];
   body: string;
 };
