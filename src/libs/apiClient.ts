@@ -1,6 +1,7 @@
 import aspida from '@aspida/fetch';
 
 import api from 'apis/$api';
+import { Category } from 'types/blog';
 
 export const endPoint = process.env.MICROCMS_API_URL;
 export const apiKey = process.env.MICROCMS_API_KEY;
@@ -36,7 +37,7 @@ const defaultValue = {
   limit?: number;
   offset?: number;
   tagId?: string;
-  category?: string;
+  category?: Category;
 }} parm1
  */
 export const getBlogs = ({
@@ -48,7 +49,7 @@ export const getBlogs = ({
   limit?: number;
   offset?: number;
   tagId?: string;
-  category?: string;
+  category?: Category;
 } = {}) => {
   // tagId と category が存在しない場合
   if (!tagId && !category) {
