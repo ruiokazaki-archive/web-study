@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+
 import aspida from '@aspida/fetch';
 
 import api from 'apis/$api';
@@ -27,7 +29,7 @@ const defaultValue = {
 };
 
 /**
- * ブログを取得する関数です。
+ * ブログを一覧で取得します
  * 引数にフィルターの値を入れることができます。
  * default
  * limit: 12
@@ -86,3 +88,11 @@ export const getBlogs = ({
     },
   });
 };
+
+/**
+ * ブログを1件取得します
+ * @date 2022-05-11
+ * @param { string } id
+ */
+export const getBlogById = (id: string) =>
+  fetchClient.blogs._blogId(id).$get({ config });
