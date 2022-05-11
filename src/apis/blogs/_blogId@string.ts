@@ -1,4 +1,4 @@
-import { Blog } from 'apis/blogs';
+import { Blog } from 'types/blog';
 
 export type Methods = {
   get: {

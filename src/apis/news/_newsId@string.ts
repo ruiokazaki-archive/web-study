@@ -1,4 +1,4 @@
-import { News } from 'apis/news';
+import { News } from 'types/news';
 
 export type Methods = {
   get: {
