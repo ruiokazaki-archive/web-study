@@ -1,11 +1,7 @@
 import { MicroCMSQueries } from 'microcms-js-sdk';
 
-import { MicroCMSList, MicroCMSObject } from 'apis/MicroCMSTypes';
-
-export type Tag = MicroCMSObject & {
-  nameEn: string;
-  nameJa: string;
-};
+import { MicroCMSList } from 'types/microCMS';
+import { Tag } from 'types/tag';
 
 export type Methods = {
   get: {
