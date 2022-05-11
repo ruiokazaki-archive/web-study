@@ -96,3 +96,31 @@ export const getBlogs = ({
  */
 export const getBlogById = (id: string) =>
   fetchClient.blogs._blogId(id).$get({ config });
+
+/**
+ * お知らせを一覧で取得します
+ * @date 2022-05-11
+ * @param {{
+  limit,
+  offset,
+}: { limit?: number; offset?: number } = {}} parm1
+ */
+export const getNews = ({
+  limit,
+  offset,
+}: { limit?: number; offset?: number } = {}) =>
+  fetchClient.news.$get({
+    config,
+    query: {
+      limit: limit || defaultValue.limit,
+      offset: offset || defaultValue.offset,
+    },
+  });
+
+/**
+ * ニュースを1件取得します
+ * @date 2022-05-11
+ * @param { string } id
+ */
+export const getNewsById = (id: string) =>
+  fetchClient.news._newsId(id).$get({ config });
