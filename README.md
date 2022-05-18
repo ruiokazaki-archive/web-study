@@ -7,6 +7,7 @@
 - 開発する場合は `feature/機能名` ブランチを作成してそちらで作業する
 - 修正する場合は `fix/機能名` ブランチを作成する
 - master ブランチで緊急を要する修正をする場合のみ master から `hotfix/` ブランチを切ることができる
+- README.md は master から docs/update ブランチを切り更新することができる
 
 ### プルリクについて
 
@@ -21,18 +22,19 @@
 
 ## npm scripts
 
-| alias    | 実行内容                      | command                                                                                       |
-| -------- | ----------------------------- | --------------------------------------------------------------------------------------------- |
-| dev      | 開発モードで起動              | `next`                                                                                        |
-| build    | ビルドします                  | `next build`                                                                                  |
-| start    | 本番モードで起動              | `next start`                                                                                  |
-| mc       | component を作成              | `sh makeComponentsFile.sh`                                                                    |
-| sb       | StoryBook を起動              | `start-storybook -p 6006`                                                                     |
-| build-sb | StoryBook をビルド            | `build-storybook`                                                                             |
-| lint     | ESLint でコードをチェック     | `eslint 'src/\*_/_.{js,jsx,ts,tsx}'`                                                          |
-| lint:fix | ESLint でコードを修正         | `eslint --fix 'src/\*_/_.{js,jsx,ts,tsx}'`                                                    |
-| format   | prettier でコードを format    | `prettier --write --loglevel=warn '{public,src}/\*_/_.{js,jsx,ts,tsx,html,gql,graphql,json}'` |
-| fix      | format した後 linter にかける | `yarn -s format && yarn -s lint:fix`                                                          |
+| alias    | 実行内容                              | command                                                                                       |
+| -------- | ------------------------------------- | --------------------------------------------------------------------------------------------- |
+| dev      | 開発モードで起動                      | `next`                                                                                        |
+| build    | ビルドします                          | `next build`                                                                                  |
+| start    | 本番モードで起動                      | `next start`                                                                                  |
+| api      | aspida を使用し、api の型を作成します | `aspida`                                                                                      |
+| mc       | component を作成                      | `sh makeComponentsFile.sh`                                                                    |
+| sb       | StoryBook を起動                      | `start-storybook -p 6006`                                                                     |
+| build-sb | StoryBook をビルド                    | `build-storybook`                                                                             |
+| lint     | ESLint でコードをチェック             | `eslint 'src/\*_/_.{js,jsx,ts,tsx}'`                                                          |
+| lint:fix | ESLint でコードを修正                 | `eslint --fix 'src/\*_/_.{js,jsx,ts,tsx}'`                                                    |
+| format   | prettier でコードを format            | `prettier --write --loglevel=warn '{public,src}/\*_/_.{js,jsx,ts,tsx,html,gql,graphql,json}'` |
+| fix      | format した後 linter にかける         | `yarn -s format && yarn -s lint:fix`                                                          |
 
 ## commit message
 
@@ -57,6 +59,13 @@ commit-lint を導入しているため、規則に沿わない場合エラー�
 ```
 chore: commit-lintを導入した
 feat!: ログイン機能を作成した
+```
+
+## 環境変数(.env.local)
+
+```
+MICROCMS_API_URL=https://XxXxXxXxXxXxX.microcms.io/api/v1
+MICROCMS_API_KEY=XxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXx
 ```
 
 ## ディレクトリ説明
