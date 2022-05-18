@@ -5,7 +5,7 @@ export type Category = 'engineer' | 'design' | 'column';
 export type Author =
   | 'okazaki'
   | 'kobayashi'
-  | 'satou'
+  | 'sato'
   | 'kinoshita'
   | 'ryou'
   | 'suda';
@@ -17,4 +17,9 @@ export type Blog = MicroCMSObject & {
   category: Category[];
   tags: Tag[];
   body: string;
+  thumbnail: {
+    url: string;
+    height: number;
+    width: number;
+  };
 };
