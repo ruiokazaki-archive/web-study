@@ -94,8 +94,11 @@ export const getBlogs = ({
  * @date 2022-05-11
  * @param { string } id
  */
-export const getBlogById = (id: string) =>
+export const getBlogById = (id: string) => {
+  if (!id) throw new Error('idが引数に渡されてません');
+
   fetchClient.blogs._blogId(id).$get({ config });
+};
 
 /**
  * お知らせを一覧で取得します
@@ -124,3 +127,17 @@ export const getNews = ({
  */
 export const getNewsById = (id: string) =>
   fetchClient.news._newsId(id).$get({ config });
+
+/**
+ * タグ名を渡すと、タグIdを返却します
+ * @date 2022-05-18
+ * @param { string } name
+ */
+export const getTagsIdByName = (name: string) => {
+  if (!name) throw new Error('nameが引数に渡されてません');
+
+  return fetchClient.tags.$get({
+    config,
+    query: { limit: 1, filters: `nameEn[equals]${name}` },
+  });
+};
