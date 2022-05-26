@@ -15,7 +15,7 @@ const colors = {
 const textStyles = {
   nav: {
     fontSize: '14px',
-    lineHeight: '68px',
+    height: '68px',
   },
   blog: {
     h1: {
