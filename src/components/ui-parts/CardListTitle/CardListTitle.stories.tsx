@@ -8,5 +8,5 @@ export default {
 } as ComponentMeta<typeof CardListTitle>;
 
 export const Default1: ComponentStory<typeof CardListTitle> = () => (
-  <CardListTitle>人気のある記事</CardListTitle>
+  <CardListTitle title="title" />
 );
