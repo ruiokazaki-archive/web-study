@@ -7,6 +7,6 @@ export default {
   component: CardListTitle,
 } as ComponentMeta<typeof CardListTitle>;
 
-export const Default1: ComponentStory<typeof CardListTitle> = () => (
+export const Default: ComponentStory<typeof CardListTitle> = () => (
   <CardListTitle title="title" />
 );
