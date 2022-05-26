@@ -86,6 +86,9 @@ const styles = {
       backgroundColor: 'bgColor',
       fontFamily: 'body',
     },
+    li: {
+      listStyleType: 'none',
+    },
   },
 };
 const fonts = {
