@@ -4,7 +4,7 @@ import { AppProps } from 'next/app';
 import theme from 'theme';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  // NOTE Componentの型情報が原因でbuildエラーが出たため、例外でanyにすることで対処した
+  // NOTE Componentの型情報が原因でbuildエラーが出たため、例外でanyにすることで対処
   // eslint-disable-next-line max-len
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
   const AnyComponent = Component as any;
