@@ -8,5 +8,5 @@ export default {
 } as ComponentMeta<typeof HeadSearch>;
 
 export const Default1: ComponentStory<typeof HeadSearch> = () => (
-  <HeadSearch></HeadSearch>
+  <HeadSearch />
 );

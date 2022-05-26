@@ -8,11 +8,7 @@ const link = [
 ];
 
 const HeadLink: VFC = () => (
-  <Flex
-    as="ul"
-    gap="56px"
-    fontWeight="bold"
-  >
+  <Flex as="ul" gap="56px" fontWeight="bold">
     {link.map((item, i) => (
       <Box as="li" key={item.id}>
         <Box

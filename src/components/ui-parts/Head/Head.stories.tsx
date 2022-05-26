@@ -7,6 +7,4 @@ export default {
   component: Head,
 } as ComponentMeta<typeof Head>;
 
-export const Default1: ComponentStory<typeof Head> = () => (
-  <Head></Head>
-);
+export const Default1: ComponentStory<typeof Head> = () => <Head />;

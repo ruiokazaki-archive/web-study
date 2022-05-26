@@ -7,6 +7,4 @@ export default {
   component: Spacer,
 } as ComponentMeta<typeof Spacer>;
 
-export const Default1: ComponentStory<typeof Spacer> = () => (
-  <Spacer></Spacer>
-);
+export const Default1: ComponentStory<typeof Spacer> = () => <Spacer />;
