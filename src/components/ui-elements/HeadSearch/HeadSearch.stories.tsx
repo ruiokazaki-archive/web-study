@@ -7,6 +7,4 @@ export default {
   component: HeadSearch,
 } as ComponentMeta<typeof HeadSearch>;
 
-export const Default1: ComponentStory<typeof HeadSearch> = () => (
-  <HeadSearch />
-);
+export const Default1: ComponentStory<typeof HeadSearch> = () => <HeadSearch />;
