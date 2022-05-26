@@ -1,8 +1,7 @@
-import { Text } from '@chakra-ui/react';
 import { NextPage } from 'next';
 
-const Index: NextPage = () => (
-  <Text textStyle="card.title">Next ❤️ Chakra</Text>
-);
+import Head from '../components/ui-parts/Head';
+
+const Index: NextPage = () => <Head />;
 
 export default Index;

@@ -8,18 +8,19 @@ const link = [
 ];
 
 const HeadLink: VFC = () => (
-  <Flex as="ul" gap="56px" fontWeight="bold">
+  <Flex as="ul" h="100%" fontWeight="bold">
     {link.map((item, i) => (
-      <Box as="li" key={item.id}>
-        <Box
+      <Box as="li" key={item.id} h="100%">
+        <Flex
           as="a"
           href={item.path}
-          display="block"
+          alignItems="center"
           h="100%"
+          p="0 24px"
           _hover={{ textDecoration: 'underline' }}
         >
           {item.name}
-        </Box>
+        </Flex>
       </Box>
     ))}
   </Flex>
