@@ -9,6 +9,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "api": "aspida",
     "mc": "sh makeComponentsFile.sh",
     "sb": "start-storybook -p 6006",
     "build-sb": "build-storybook",
