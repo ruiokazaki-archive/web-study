@@ -10,16 +10,17 @@ type Props = {
   blogData: Pick<Blog, 'id' | 'title' | 'author' | 'thumbnail' | 'createdAt'>;
 };
 
-const Article: VFC<Props> = ({ blogData }) => (
+const Card: VFC<Props> = ({ blogData }) => (
   <NextLink href={`/blog/${blogData.id}`} passHref>
     <Box
       as="a"
       bg="white"
-      w="47.5%"
+      w="30%"
       height="fit-content"
-      textStyle="article"
-      borderRadius="8px"
+      textStyle="card"
+      borderRadius="4px"
       overflow="hidden"
+      boxShadow="0px 2px 6px rgba(0, 0, 0, 0.25)"
       cursor="pointer"
       transition="all 0.2s"
       _hover={{
@@ -36,12 +37,11 @@ const Article: VFC<Props> = ({ blogData }) => (
       <Flex
         justifyContent="space-between"
         flexDirection="column"
-        gap="24px"
-        py="24px"
-        px="16px"
+        gap="16px"
+        p="16px"
       >
         <CardDate>{blogData.createdAt}</CardDate>
-        <Heading as="h3" height="72px">
+        <Heading as="h3" height="56px">
           {blogData.title}
         </Heading>
         <CardAuthor author={blogData.author[0]} />
@@ -49,4 +49,4 @@ const Article: VFC<Props> = ({ blogData }) => (
     </Box>
   </NextLink>
 );
-export default Article;
+export default Card;

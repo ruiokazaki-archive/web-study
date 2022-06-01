@@ -43,8 +43,8 @@ const textStyles = {
     },
   },
   card: {
-    title: {
-      fontSize: '20px',
+    h3: {
+      fontSize: '18px',
       lineHeight: '28px',
       fontWeight: 'bold',
     },
@@ -58,19 +58,9 @@ const textStyles = {
     },
   },
   article: {
-    title: {
-      fontSize: '32px',
-      lineHeight: '48px',
-      fontWeight: 'bold',
-    },
-    h2: {
+    h3: {
       fontSize: '24px',
       lineHeight: '36px',
-      fontWeight: 'bold',
-    },
-    h3: {
-      fontSize: '20px',
-      lineHeight: '30px',
       fontWeight: 'bold',
     },
     text: {

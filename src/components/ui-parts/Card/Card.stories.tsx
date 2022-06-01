@@ -2,12 +2,12 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Blog } from 'types/blog';
 
-import Article from './index';
+import Card from './index';
 
 export default {
-  title: 'ui-parts/Article',
-  component: Article,
-} as ComponentMeta<typeof Article>;
+  title: 'ui-parts/Card',
+  component: Card,
+} as ComponentMeta<typeof Card>;
 
 const blogData: Pick<
   Blog,
@@ -24,6 +24,6 @@ const blogData: Pick<
   },
 };
 
-export const Default1: ComponentStory<typeof Article> = () => (
-  <Article blogData={blogData} />
+export const Default1: ComponentStory<typeof Card> = () => (
+  <Card blogData={blogData} />
 );
