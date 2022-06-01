@@ -15,7 +15,7 @@ const colors = {
 const textStyles = {
   nav: {
     fontSize: { base: '12px', sm: '12px', md: '14px' },
-    height: { base: '88px', sm: '68px', md: '68px' },
+    height: { base: '88px', sm: '64px', md: '64px' },
   },
   blog: {
     h1: {
@@ -30,7 +30,7 @@ const textStyles = {
     },
     h3: {
       fontSize: '20px',
-      lineHeight: '30px',
+      lineHeight: '32px',
       fontWeight: 'bold',
     },
     body: {

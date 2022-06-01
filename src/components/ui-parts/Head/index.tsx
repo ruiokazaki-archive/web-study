@@ -40,7 +40,7 @@ const Head: VFC = () => (
           '&::before': {
             content: "''",
             display: 'block',
-            width: '13px',
+            width: '12px',
             height: '1px',
             background: 'gray',
             margin: '0 10px 0 0',
@@ -48,7 +48,7 @@ const Head: VFC = () => (
           '&::after': {
             content: "''",
             display: 'block',
-            width: '13px',
+            width: '12px',
             height: '1px',
             background: 'gray',
             margin: '0 0 0 10px',
