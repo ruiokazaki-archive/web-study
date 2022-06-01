@@ -14,8 +14,8 @@ const colors = {
 };
 const textStyles = {
   nav: {
-    fontSize: '14px',
-    lineHeight: '68px',
+    fontSize: { base: '12px', sm: '12px', md: '14px' },
+    height: { base: '88px', sm: '64px', md: '64px' },
   },
   blog: {
     h1: {
@@ -30,7 +30,7 @@ const textStyles = {
     },
     h3: {
       fontSize: '20px',
-      lineHeight: '30px',
+      lineHeight: '32px',
       fontWeight: 'bold',
     },
     body: {
@@ -86,16 +86,25 @@ const styles = {
       backgroundColor: 'bgColor',
       fontFamily: 'body',
     },
+    li: {
+      listStyleType: 'none',
+    },
   },
 };
 const fonts = {
   body: "'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif",
 };
+const breakpoints = {
+  sm: '600px',
+  md: '1024px',
+};
+
 const theme = extendTheme({
   styles,
   colors,
   fonts,
   textStyles,
+  breakpoints,
 });
 
 export default theme;
