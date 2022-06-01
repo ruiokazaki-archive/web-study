@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 
-import Head from '../components/ui-parts/Head';
+import ArticleListLink from '../components/ui-elements/ArticleListLink';
 
-const Index: NextPage = () => <Head />;
+const Index: NextPage = () => <ArticleListLink />;
 
 export default Index;
