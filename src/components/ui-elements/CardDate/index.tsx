@@ -1,4 +1,4 @@
-import { Text } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import { VFC, ReactNode } from 'react';
 
 import CalendarIcon from 'assets/CalendarIcon';
@@ -8,15 +8,15 @@ type Props = {
 };
 
 const CardDate: VFC<Props> = ({ children }) => (
-  <Text
+  <Flex
+    as={Text}
     textStyle="card.text"
-    display="flex"
     alignItems="center"
     color="gray"
     gap="6px"
   >
     <CalendarIcon />
     {children}
-  </Text>
+  </Flex>
 );
 export default CardDate;
