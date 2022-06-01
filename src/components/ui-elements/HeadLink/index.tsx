@@ -16,7 +16,7 @@ const HeadLink: VFC = () => (
           href={item.path}
           alignItems="center"
           h="100%"
-          p="0 24px"
+          p="0 12px"
           _hover={{ textDecoration: 'underline' }}
         >
           {item.name}

@@ -3,14 +3,14 @@ import { Flex } from '@chakra-ui/react';
 import { VFC } from 'react';
 
 const HeadSearch: VFC = () => (
-  <Flex as="form">
-    <Flex as="label" alignItems="center" pos="relative">
+  <Flex as="form" w={{ base: '100%', sm: '40%', md: '260px' }} minW="128px">
+    <Flex as="label" alignItems="center" w="100%" pos="relative">
       <SearchIcon pos="absolute" inset="auto 0 auto 12px" />
       <Flex
         as="input"
         type="search"
         placeholder="検索"
-        w="260px"
+        w="100%"
         h="30px"
         pl="32px"
         border="1px solid #989898"

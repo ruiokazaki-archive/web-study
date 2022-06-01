@@ -14,8 +14,8 @@ const colors = {
 };
 const textStyles = {
   nav: {
-    fontSize: '14px',
-    height: '68px',
+    fontSize: { base: '12px', sm: '12px', md: '14px' },
+    height: { base: '88px', sm: '68px', md: '68px' },
   },
   blog: {
     h1: {
@@ -94,11 +94,17 @@ const styles = {
 const fonts = {
   body: "'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif",
 };
+const breakpoints = {
+  sm: '600px',
+  md: '1024px',
+};
+
 const theme = extendTheme({
   styles,
   colors,
   fonts,
   textStyles,
+  breakpoints,
 });
 
 export default theme;
