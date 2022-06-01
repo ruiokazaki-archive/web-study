@@ -1,7 +1,8 @@
+import { Text } from '@chakra-ui/react';
 import { NextPage } from 'next';
 
-import ArticleListLink from '../components/ui-elements/ArticleListLink';
-
-const Index: NextPage = () => <ArticleListLink />;
+const Index: NextPage = () => (
+  <Text textStyle="card.title">Next ❤️ Chakra</Text>
+);
 
 export default Index;
