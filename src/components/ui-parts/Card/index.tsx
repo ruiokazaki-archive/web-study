@@ -29,6 +29,7 @@ const Card: VFC<Props> = ({ blogData }) => (
     >
       <Img
         src={blogData.thumbnail.url}
+        alt={`${blogData.title}のサムネイル`}
         objectFit="cover"
         sx={{
           aspectRatio: '541 / 272.11',
