@@ -1,6 +1,9 @@
 import { ChakraProvider } from '@chakra-ui/react';
+import { AppProps } from 'next/dist/shared/lib/router/router';
 
+import GoogleTagManager from 'components/GoogleTagManager';
 import theme from 'theme';
+import googleTagManagerId from 'utils/gtm';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   // NOTE Componentの型情報が原因でbuildエラーが出たため、例外でanyにすることで対処した
@@ -9,9 +12,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const AnyComponent = Component as any;
 
   return (
-    <ChakraProvider resetCSS theme={theme}>
-      <AnyComponent {...pageProps} />
-    </ChakraProvider>
+    <>
+      <GoogleTagManager googleTagManagerId={googleTagManagerId} />
+      <ChakraProvider resetCSS theme={theme}>
+        <AnyComponent {...pageProps} />
+      </ChakraProvider>
+    </>
   );
 };
 
