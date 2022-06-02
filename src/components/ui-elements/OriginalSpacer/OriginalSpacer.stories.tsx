@@ -8,5 +8,5 @@ export default {
 } as ComponentMeta<typeof OriginalSpacer>;
 
 export const Default1: ComponentStory<typeof OriginalSpacer> = () => (
-  <OriginalSpacer />
+  <OriginalSpacer size="10px" />
 );
