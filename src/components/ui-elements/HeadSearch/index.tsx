@@ -10,7 +10,7 @@ const HeadSearch: VFC = () => (
         as="input"
         type="search"
         placeholder="検索"
-        w="264px"
+        w="100%"
         h="32px"
         pl="32px"
         border="1px solid #989898"
