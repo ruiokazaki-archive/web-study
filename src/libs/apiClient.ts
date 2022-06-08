@@ -97,7 +97,7 @@ export const getBlogs = ({
 export const getBlogById = (id: string) => {
   if (!id) throw new Error('idが引数に渡されてません');
 
-  fetchClient.blogs._blogId(id).$get({ config });
+  return fetchClient.blogs._blogId(id).$get({ config });
 };
 
 /**
