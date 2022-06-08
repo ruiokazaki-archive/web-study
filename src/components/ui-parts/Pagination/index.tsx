@@ -1,24 +1,33 @@
 import { Box, Flex } from '@chakra-ui/react';
-import React, { ReactNode, VFC } from 'react';
+import NextLink from 'next/link';
+import { ReactNode, VFC } from 'react';
 
 type CircleProps = {
+  pageNumber: number;
   currentPage?: boolean;
   children: ReactNode;
 };
 
-const Circle: VFC<CircleProps> = ({ currentPage = false, children }) => (
-  <Box
-    w="48px"
-    h="48px"
-    borderRadius="full"
-    textAlign="center"
-    lineHeight="48px"
-    bg={currentPage ? 'main' : 'transparent'}
-    color={currentPage ? 'white' : 'text'}
-    textStyle="pagination"
-  >
-    {children}
-  </Box>
+const Circle: VFC<CircleProps> = ({
+  pageNumber,
+  currentPage = false,
+  children,
+}) => (
+  <NextLink href={`/${pageNumber}`}>
+    <Box
+      w="48px"
+      h="48px"
+      cursor="pointer"
+      borderRadius="full"
+      textAlign="center"
+      lineHeight="48px"
+      bg={currentPage ? 'main' : 'transparent'}
+      color={currentPage ? 'white' : 'text'}
+      textStyle="pagination"
+    >
+      {children}
+    </Box>
+  </NextLink>
 );
 
 type Props = {
@@ -45,8 +54,8 @@ const Pagination: VFC<Props> = ({
   ): 'few' | 'leftOrRight' | 'middle' => {
     if (_paginationNumber <= 7) return 'few';
     if (
-      _currentPageNumber <= 3 ||
-      _currentPageNumber >= _paginationNumber - 2
+      _currentPageNumber <= 3
+      || _currentPageNumber >= _paginationNumber - 2
     ) {
       return 'leftOrRight';
     }
@@ -91,10 +100,11 @@ const Pagination: VFC<Props> = ({
   );
 
   return (
-    <Flex w="fit-content">
-      {displayState === 'few' &&
-        paginationNumberArray.map((paginationNumber) => (
+    <Flex w="fit-content" gap="8px">
+      {displayState === 'few'
+        && paginationNumberArray.map((paginationNumber) => (
           <Circle
+            pageNumber={paginationNumber}
             key={paginationNumber}
             currentPage={currentPageNumber === paginationNumber}
           >
@@ -103,20 +113,21 @@ const Pagination: VFC<Props> = ({
         ))}
       {displayState === 'middle' && (
         <>
-          <Circle>{paginationNumberArray[0]}</Circle>
-          <Circle>...</Circle>
+          <Circle pageNumber={0}>{paginationNumberArray[0]}</Circle>
+          <Circle pageNumber={currentPageNumber}>...</Circle>
           {paginationNumberArray
             .slice(currentPageNumber - 2, currentPageNumber + 1)
             .map((paginationNumber) => (
               <Circle
+                pageNumber={paginationNumber}
                 key={paginationNumber}
                 currentPage={currentPageNumber === paginationNumber}
               >
                 {paginationNumber}
               </Circle>
             ))}
-          <Circle>...</Circle>
-          <Circle>
+          <Circle pageNumber={currentPageNumber}>...</Circle>
+          <Circle pageNumber={paginationNumberArray.length - 1}>
             {paginationNumberArray[paginationNumberArray.length - 1]}
           </Circle>
         </>
@@ -127,24 +138,26 @@ const Pagination: VFC<Props> = ({
             <>
               {paginationNumberArray.slice(0, 5).map((paginationNumber) => (
                 <Circle
+                  pageNumber={paginationNumber}
                   key={paginationNumber}
                   currentPage={currentPageNumber === paginationNumber}
                 >
                   {paginationNumber}
                 </Circle>
               ))}
-              <Circle>...</Circle>
-              <Circle>
+              <Circle pageNumber={currentPageNumber}>...</Circle>
+              <Circle pageNumber={paginationNumberArray.length - 1}>
                 {paginationNumberArray[paginationNumberArray.length - 1]}
               </Circle>
             </>
           )}
           {currentPageNumber >= paginationNumberArray.length - 2 && (
             <>
-              <Circle>{paginationNumberArray[0]}</Circle>
-              <Circle>...</Circle>
+              <Circle pageNumber={0}>{paginationNumberArray[0]}</Circle>
+              <Circle pageNumber={currentPageNumber}>...</Circle>
               {paginationNumberArray.slice(-5).map((paginationNumber) => (
                 <Circle
+                  pageNumber={paginationNumber}
                   key={paginationNumber}
                   currentPage={currentPageNumber === paginationNumber}
                 >
