@@ -8,7 +8,15 @@ const AuthorInfo: VFC = () => {
   const authorInfo = getAllAuthorInfo();
 
   return (
-    <Flex as="ul" justifyContent="center" flexWrap="wrap" gap="48px 40px" w="90vw" maxW="800px" m="0 auto">
+    <Flex
+      as="ul"
+      justifyContent="center"
+      flexWrap="wrap"
+      gap="48px 40px"
+      w="90vw"
+      maxW="800px"
+      m="0 auto"
+    >
       {authorInfo.map((item) => (
         <Flex
           as="li"
