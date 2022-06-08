@@ -4,7 +4,7 @@ import ArticleHead from 'components/ui-elements/ArticleHead';
 import OriginalSpacer from 'components/ui-elements/OriginalSpacer';
 import ArticleBody from 'components/ui-parts/ArticleBody';
 import Head from 'components/ui-parts/Head';
-import { getBlogs } from 'libs/apiClient';
+import { getBlogById, getBlogs } from 'libs/apiClient';
 import { Blog } from 'types/blog';
 
 import type { NextPage } from 'next';
@@ -14,8 +14,6 @@ type Props = {
 };
 
 const Article: NextPage<Props> = ({ blogData }) => (
-  // eslint-disable-next-line no-console
-
   <>
     <Head />
     <Box
@@ -51,13 +49,11 @@ export const getStaticProps = async ({
 }: {
   params: { id: string };
 }) => {
-  const microCMSBlogs = await getBlogs({ limit: 1000 });
-  const data = microCMSBlogs.contents.filter((item) =>
-    item.id.match(params.id));
+  const data = await getBlogById(params.id);
 
   return {
     props: {
-      blogData: data[0],
+      blogData: data,
     },
   };
 };
