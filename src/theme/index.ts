@@ -109,6 +109,10 @@ const textStyles = {
       },
     },
   },
+  pagination: {
+    fontWeight: 'bold',
+    fontSize: '16px',
+  },
 };
 const styles = {
   global: {
