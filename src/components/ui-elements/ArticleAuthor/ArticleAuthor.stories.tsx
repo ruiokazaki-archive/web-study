@@ -8,5 +8,5 @@ export default {
 } as ComponentMeta<typeof ArticleAuthor>;
 
 export const Default1: ComponentStory<typeof ArticleAuthor> = () => (
-  <ArticleAuthor />
+  <ArticleAuthor authorData="okazaki" />
 );
