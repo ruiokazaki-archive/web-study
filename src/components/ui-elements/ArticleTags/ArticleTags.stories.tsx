@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+
 import { Blog } from 'types/blog';
 
 import ArticleTags from './index';
