@@ -29,6 +29,19 @@ const defaultValue = {
 };
 
 /**
+ * おすすめの記事を取得します
+ * @date 2022-06-09
+ */
+export const getRcmBlogs = () =>
+  fetchClient.blogs.$get({
+    config,
+    query: {
+      limit: 1000,
+      filters: 'recommend[equals]true',
+    },
+  });
+
+/**
  * ブログを一覧で取得します
  * 引数にフィルターの値を入れることができます。
  * default
