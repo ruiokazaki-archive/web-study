@@ -18,8 +18,9 @@ const index: NextPage<Props> = ({ blogData }) => (
     <Flex
       flexWrap="wrap"
       justifyContent="space-between"
-      gap="40px"
-      width="1000px"
+      gap="40px 0"
+      maxW="1000px"
+      w="90vw"
       m="0 auto"
     >
       {blogData.map((blog) => (
@@ -27,7 +28,7 @@ const index: NextPage<Props> = ({ blogData }) => (
       ))}
     </Flex>
     <ToAuthorBnr />
-    <ArticleTweetBtn link="/" />
+    <ArticleTweetBtn />
   </Box>
 );
 

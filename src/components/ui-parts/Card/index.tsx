@@ -15,7 +15,7 @@ const Card: VFC<Props> = ({ blogData }) => (
     <Box
       as="a"
       bg="white"
-      w="30%"
+      w={{ base: '100%', sm: '48%', md: '30%' }}
       height="fit-content"
       textStyle="card"
       borderRadius="4px"

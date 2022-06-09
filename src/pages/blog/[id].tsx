@@ -1,20 +1,31 @@
 import { Box } from '@chakra-ui/react';
+import { NextSeo } from 'next-seo';
 
 import ArticleHead from 'components/ui-elements/ArticleHead';
+import ArticleIndexLink from 'components/ui-elements/ArticleIndexLink';
+import ArticleTweetBtn from 'components/ui-elements/ArticleTweetBtn';
 import OriginalSpacer from 'components/ui-elements/OriginalSpacer';
 import ArticleBody from 'components/ui-parts/ArticleBody';
+import ArticleRcm from 'components/ui-parts/ArticleRcm';
 import Head from 'components/ui-parts/Head';
-import { getBlogById, getBlogs } from 'libs/apiClient';
+import { getBlogById, getBlogs, getRcmBlogs } from 'libs/apiClient';
 import { Blog } from 'types/blog';
 
 import type { NextPage } from 'next';
 
 type Props = {
   blogData: Blog;
+  rcmData: Blog[];
 };
 
-const Article: NextPage<Props> = ({ blogData }) => (
+const Article: NextPage<Props> = ({ blogData, rcmData }) => (
   <>
+    <NextSeo
+      title={blogData.title}
+      description={`この記事では${blogData.tags
+        .map((item) => item.nameJa)
+        .join('、')}について掲載しています！`}
+    />
     <Head />
     <Box
       w={{
@@ -30,6 +41,13 @@ const Article: NextPage<Props> = ({ blogData }) => (
       <Box as="img" src={blogData.thumbnail.url} w="100%" />
       <ArticleBody data={blogData} />
     </Box>
+    <OriginalSpacer size="56px" />
+    <ArticleIndexLink />
+    <OriginalSpacer size="56px" />
+    <ArticleTweetBtn />
+    <OriginalSpacer size="56px" />
+    <ArticleRcm blogData={rcmData} />
+    <OriginalSpacer size="160px" />
   </>
 );
 export const getStaticPaths = async () => {
@@ -50,10 +68,21 @@ export const getStaticProps = async ({
   params: { id: string };
 }) => {
   const data = await getBlogById(params.id);
+  const microCMSBlogs = await getRcmBlogs();
+  const rcmBlogs = microCMSBlogs.contents;
+  let rcmLength = rcmBlogs.length;
+
+  while (rcmLength) {
+    const j = Math.floor(Math.random() * rcmLength);
+    const t = rcmBlogs[(rcmLength -= 1)];
+    rcmBlogs[rcmLength] = rcmBlogs[j];
+    rcmBlogs[j] = t;
+  }
 
   return {
     props: {
       blogData: data,
+      rcmData: rcmBlogs.slice(0, 3),
     },
   };
 };

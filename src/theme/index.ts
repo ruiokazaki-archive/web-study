@@ -100,6 +100,8 @@ const textStyles = {
       background: '#172848',
       margin: '24px 0',
       padding: '24px 20px',
+      fontSize: '13px',
+      lineHeight: '22px',
     },
     a: {
       color: 'main',
