@@ -1,14 +1,17 @@
 import { Flex } from '@chakra-ui/react';
 import { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
 
 import AuthorInfo from 'components/ui-elements/AuthorInfo';
 import OriginalSpacer from 'components/ui-elements/OriginalSpacer';
 import Head from 'components/ui-parts/Head';
 
-// import AuthorHead from '../assets/author_head';
-
 const AuthorList: NextPage = () => (
   <>
+    <NextSeo
+      title="メンバー紹介"
+      description="うぇぶスタの記事を書いているゆかいな仲間たちです！"
+    />
     <Head />
     <Flex
       as="h2"
