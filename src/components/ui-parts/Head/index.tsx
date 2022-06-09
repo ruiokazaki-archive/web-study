@@ -15,7 +15,7 @@ const Head: VFC = () => (
       md: 'space-between',
     }}
     flexDirection={{ base: 'column', sm: 'row', md: 'row' }}
-    w="100vw"
+    w="100%"
     bg="#fff"
     m="0 auto"
     p={{ base: '8px 5vw', sm: '0 5vw', md: '0 10vw' }}
