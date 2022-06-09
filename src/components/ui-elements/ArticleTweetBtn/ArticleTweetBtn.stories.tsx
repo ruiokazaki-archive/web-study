@@ -8,5 +8,5 @@ export default {
 } as ComponentMeta<typeof ArticleTweetBtn>;
 
 export const Default1: ComponentStory<typeof ArticleTweetBtn> = () => (
-  <ArticleTweetBtn></ArticleTweetBtn>
+  <ArticleTweetBtn />
 );
