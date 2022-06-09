@@ -4,13 +4,18 @@ import { VFC } from 'react';
 type OriginalSpacerProps = {
   size: string;
   horizontal?: boolean;
+  head?: boolean;
 };
 
-const OriginalSpacer: VFC<OriginalSpacerProps> = ({ size, horizontal }) => (
+const OriginalSpacer: VFC<OriginalSpacerProps> = ({
+  size,
+  horizontal,
+  head = false,
+}) => (
   <Box
     display={{ base: 'none', sm: 'block', md: 'block' }}
-    sx={
-      horizontal
+    sx={{
+      ...(horizontal
         ? {
             width: size,
             height: 'auto',
@@ -18,8 +23,18 @@ const OriginalSpacer: VFC<OriginalSpacerProps> = ({ size, horizontal }) => (
         : {
             width: 'auto',
             height: size,
+          }),
+      ...(head
+        ? {
+            display: 'block',
+            '@media screen and (max-width: 600px)': {
+              display: 'none',
+            },
           }
-    }
+        : {
+            display: 'block',
+          }),
+    }}
   />
 );
 

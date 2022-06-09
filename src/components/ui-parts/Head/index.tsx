@@ -59,7 +59,7 @@ const Head: VFC = () => (
       <Spacer />
       <HeadLink />
     </Flex>
-    <OriginalSpacer size="5vw" horizontal />
+    <OriginalSpacer size="5vw" horizontal head />
     <HeadSearch />
   </Flex>
 );
