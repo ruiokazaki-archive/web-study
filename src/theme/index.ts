@@ -58,6 +58,11 @@ const textStyles = {
     },
   },
   article: {
+    title: {
+      fontSize: '24px',
+      fontWeight: 'bold',
+      letterSpacing: '4%',
+    },
     h2: {
       fontWeight: 'bold',
       margin: '80px 0 32px',
