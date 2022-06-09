@@ -25,7 +25,7 @@ const ArticleAuthor: VFC<Props> = ({ authorData }) => {
         <Text fontSize="16px" fontWeight="bold" m="4px 0 8px">
           {authorInfo.authorName}
         </Text>
-        <Text>ああああああ</Text>
+        <Text>{authorInfo.authorText}</Text>
       </Box>
     </Flex>
   );
