@@ -7,6 +7,4 @@ export default {
   component: AuthorInfo,
 } as ComponentMeta<typeof AuthorInfo>;
 
-export const Default1: ComponentStory<typeof AuthorInfo> = () => (
-  <AuthorInfo />
-);
+export const Default1: ComponentStory<typeof AuthorInfo> = () => <AuthorInfo />;
