@@ -1,5 +1,4 @@
 import { Box, Center, Flex } from '@chakra-ui/react';
-import React from 'react';
 
 import Card from 'components/ui-parts/Card';
 import CardListTitle from 'components/ui-parts/CardListTitle';

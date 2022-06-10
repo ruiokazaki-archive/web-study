@@ -27,8 +27,8 @@ const Pagination: VFC<Props> = ({
   ): 'few' | 'leftOrRight' | 'middle' => {
     if (_paginationNumber <= 7) return 'few';
     if (
-      _currentPageNumber <= 3 ||
-      _currentPageNumber >= _paginationNumber - 2
+      _currentPageNumber <= 3
+      || _currentPageNumber >= _paginationNumber - 2
     ) {
       return 'leftOrRight';
     }
@@ -74,8 +74,8 @@ const Pagination: VFC<Props> = ({
 
   return (
     <Flex w="fit-content" gap="8px">
-      {displayState === 'few' &&
-        paginationNumberArray.map((paginationNumber) => (
+      {displayState === 'few'
+        && paginationNumberArray.map((paginationNumber) => (
           <Circle
             pageNumber={paginationNumber}
             key={paginationNumber}
