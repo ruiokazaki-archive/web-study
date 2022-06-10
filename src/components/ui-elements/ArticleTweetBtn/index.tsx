@@ -17,18 +17,25 @@ const linkData = {
 
 const ArticleTweetBtn: VFC<Props> = () => {
   const router = useRouter();
-  const origin = typeof window !== 'undefined' && window.location.origin
+  const origin =
+    typeof window !== 'undefined' && window.location.origin
       ? window.location.origin
       : '';
   const url = `${origin}${router.asPath}`;
 
   return (
-    <TwitterShareButton title={linkData.title} via={linkData.via} url={url}>
+    <Box
+      as={TwitterShareButton}
+      title={linkData.title}
+      via={linkData.via}
+      url={url}
+      w="100%"
+    >
       <Flex
         justifyContent={{ base: 'center', sm: 'flex-start', md: 'flex-start' }}
         alignItems="center"
         gap="16px"
-        w="100vw"
+        w="100%"
         h="152px"
         color="#fff"
         fontSize="32px"
@@ -62,7 +69,7 @@ const ArticleTweetBtn: VFC<Props> = () => {
           </Text>
         </Flex>
       </Flex>
-    </TwitterShareButton>
+    </Box>
   );
 };
 export default ArticleTweetBtn;
