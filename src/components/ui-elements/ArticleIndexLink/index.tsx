@@ -1,7 +1,7 @@
 import { Flex, Text } from '@chakra-ui/react';
 import { VFC } from 'react';
 
-import IndexIcon from '../../../assets/IndexIcon';
+import IndexIcon from 'assets/IndexIcon';
 
 const ArticleListLink: VFC = () => (
   <Flex
