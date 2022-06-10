@@ -1,40 +1,7 @@
-import { Box, Flex } from '@chakra-ui/react';
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import { ReactNode, VFC } from 'react';
+import { Flex } from '@chakra-ui/react';
+import { VFC } from 'react';
 
-type CircleProps = {
-  pageNumber: number;
-  currentPage?: boolean;
-  children: ReactNode;
-};
-
-const Circle: VFC<CircleProps> = ({
-  pageNumber,
-  currentPage = false,
-  children,
-}) => {
-  const router = useRouter();
-  const pathCategory = router.query.category as string;
-
-  return (
-    <NextLink href={`${pathCategory}/${pageNumber}`}>
-      <Box
-        w="48px"
-        h="48px"
-        cursor="pointer"
-        borderRadius="full"
-        textAlign="center"
-        lineHeight="48px"
-        bg={currentPage ? 'main' : 'transparent'}
-        color={currentPage ? 'white' : 'text'}
-        textStyle="pagination"
-      >
-        {children}
-      </Box>
-    </NextLink>
-  );
-};
+import Circle from 'components/ui-elements/PaginationCircle';
 
 type Props = {
   totalBlogCount: number;
@@ -60,8 +27,8 @@ const Pagination: VFC<Props> = ({
   ): 'few' | 'leftOrRight' | 'middle' => {
     if (_paginationNumber <= 7) return 'few';
     if (
-      _currentPageNumber <= 3
-      || _currentPageNumber >= _paginationNumber - 2
+      _currentPageNumber <= 3 ||
+      _currentPageNumber >= _paginationNumber - 2
     ) {
       return 'leftOrRight';
     }
@@ -107,8 +74,8 @@ const Pagination: VFC<Props> = ({
 
   return (
     <Flex w="fit-content" gap="8px">
-      {displayState === 'few'
-        && paginationNumberArray.map((paginationNumber) => (
+      {displayState === 'few' &&
+        paginationNumberArray.map((paginationNumber) => (
           <Circle
             pageNumber={paginationNumber}
             key={paginationNumber}
