@@ -46,23 +46,23 @@ export const getRcmBlogs = () =>
  * 引数にフィルターの値を入れることができます。
  * default
  * limit: 12
- * offset: 0
+ * pageNumber: 0
  * @date 2022-05-11
  * @param { {
   limit?: number;
-  offset?: number;
+  pageNumber?: number;
   tagId?: string;
   category?: Category;
 }} parm1
  */
 export const getBlogs = ({
   limit,
-  offset,
+  pageNumber,
   tagId,
   category,
 }: {
   limit?: number;
-  offset?: number;
+  pageNumber?: number;
   tagId?: string;
   category?: Category;
 } = {}) => {
@@ -72,7 +72,7 @@ export const getBlogs = ({
       config,
       query: {
         limit: limit || defaultValue.limit,
-        offset: offset || defaultValue.offset,
+        offset: pageNumber * 12 || defaultValue.offset,
       },
     });
   }
@@ -83,7 +83,7 @@ export const getBlogs = ({
       config,
       query: {
         limit: limit || defaultValue.limit,
-        offset: offset || defaultValue.offset,
+        offset: pageNumber * 12 || defaultValue.offset,
         filters: `tags[contains]${tagId}[and]category[contains]${category}`,
       },
     });
@@ -94,7 +94,7 @@ export const getBlogs = ({
     config,
     query: {
       limit: limit || defaultValue.limit,
-      offset: offset || defaultValue.offset,
+      offset: pageNumber * 12 || defaultValue.offset,
       filters: tagId
         ? `tags[contains]${tagId}`
         : `category[contains]${category}`,

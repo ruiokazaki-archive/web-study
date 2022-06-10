@@ -76,7 +76,10 @@ export const getStaticProps = async ({
 }: {
   params: { category: Category; id: string };
 }) => {
-  const blogData = await getBlogs({ category: params.category });
+  const blogData = await getBlogs({
+    category: params.category,
+    pageNumber: Number(params.id),
+  });
 
   return {
     props: {
