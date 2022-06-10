@@ -2,11 +2,10 @@ import { Box } from '@chakra-ui/react';
 import { VFC } from 'react';
 import sanitizeHtml from 'sanitize-html';
 
+import ArticleAuthor from 'components/ui-elements/ArticleAuthor';
+import ArticleTags from 'components/ui-elements/ArticleTags';
+import OriginalSpacer from 'components/ui-elements/OriginalSpacer';
 import { Blog } from 'types/blog';
-
-import ArticleAuthor from '../../ui-elements/ArticleAuthor';
-import ArticleTags from '../../ui-elements/ArticleTags';
-import OriginalSpacer from '../../ui-elements/OriginalSpacer';
 
 type Props = {
   data: Blog;
@@ -15,7 +14,7 @@ type Props = {
 const ArticleBody: VFC<Props> = ({ data }) => (
   <Box bg="#fff" p="56px 8%" fontSize="16px" lineHeight="32px">
     <Box
-      textStyle="article"
+      textStyle="blog"
       dangerouslySetInnerHTML={{
         // eslint-disable-next-line max-len
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call

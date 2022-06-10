@@ -18,51 +18,6 @@ const textStyles = {
     height: { base: '88px', sm: '64px', md: '64px' },
   },
   blog: {
-    h1: {
-      fontSize: '32px',
-      lineHeight: '48px',
-      fontWeight: 'bold',
-    },
-    h2: {
-      fontSize: '24px',
-      lineHeight: '40px',
-      fontWeight: 'bold',
-    },
-    h3: {
-      fontSize: '20px',
-      lineHeight: '32px',
-      fontWeight: 'bold',
-    },
-    body: {
-      fontSize: '16px',
-      lineHeight: '27px',
-    },
-    profile: {
-      fontSize: '14px',
-      lineHeight: '25px',
-    },
-  },
-  card: {
-    h3: {
-      fontSize: '18px',
-      lineHeight: '28px',
-      fontWeight: 'bold',
-    },
-    tag: {
-      fontSize: '10px',
-      lineHeight: '18px',
-    },
-    text: {
-      fontSize: '12px',
-      lineHeight: '22px',
-    },
-  },
-  article: {
-    title: {
-      fontSize: '24px',
-      fontWeight: 'bold',
-      letterSpacing: '4%',
-    },
     h2: {
       fontWeight: 'bold',
       margin: '80px 0 32px',
@@ -81,11 +36,6 @@ const textStyles = {
       fontSize: '20px',
       lineHeight: '36px',
       margin: '40px 0 32px',
-      fontWeight: 'bold',
-    },
-    text: {
-      fontSize: '12px',
-      lineHeight: '22px',
       fontWeight: 'bold',
     },
     p: {
@@ -110,8 +60,6 @@ const textStyles = {
       background: '#172848',
       margin: '24px 0',
       padding: '24px 20px',
-      fontSize: '13px',
-      lineHeight: '22px',
     },
     a: {
       color: 'main',
@@ -119,6 +67,37 @@ const textStyles = {
       '&:hover': {
         textDecoration: 'none',
       },
+    },
+  },
+  card: {
+    h3: {
+      fontSize: '18px',
+      lineHeight: '28px',
+      fontWeight: 'bold',
+    },
+    tag: {
+      fontSize: '10px',
+      lineHeight: '18px',
+    },
+    text: {
+      fontSize: '12px',
+      lineHeight: '22px',
+    },
+  },
+  article: {
+    title: {
+      fontSize: '24px',
+      lineHeight: '36px',
+      fontWeight: 'bold',
+    },
+    h3: {
+      fontSize: '20px',
+      lineHeight: '30px',
+      fontWeight: 'bold',
+    },
+    text: {
+      fontSize: '16px',
+      lineHeight: '32px',
     },
   },
   pagination: {
