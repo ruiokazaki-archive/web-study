@@ -83,6 +83,11 @@ const textStyles = {
       margin: '40px 0 32px',
       fontWeight: 'bold',
     },
+    text: {
+      fontSize: '12px',
+      lineHeight: '22px',
+      fontWeight: 'bold',
+    },
     p: {
       fontSize: '16px',
       lineHeight: '32px',
