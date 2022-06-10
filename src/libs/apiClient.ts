@@ -29,27 +29,40 @@ const defaultValue = {
 };
 
 /**
+ * おすすめの記事を取得します
+ * @date 2022-06-09
+ */
+export const getRcmBlogs = () =>
+  fetchClient.blogs.$get({
+    config,
+    query: {
+      limit: 1000,
+      filters: 'recommend[equals]true',
+    },
+  });
+
+/**
  * ブログを一覧で取得します
  * 引数にフィルターの値を入れることができます。
  * default
  * limit: 12
- * offset: 0
+ * pageNumber: 0
  * @date 2022-05-11
  * @param { {
   limit?: number;
-  offset?: number;
+  pageNumber?: number;
   tagId?: string;
   category?: Category;
 }} parm1
  */
 export const getBlogs = ({
   limit,
-  offset,
+  pageNumber,
   tagId,
   category,
 }: {
   limit?: number;
-  offset?: number;
+  pageNumber?: number;
   tagId?: string;
   category?: Category;
 } = {}) => {
@@ -59,7 +72,7 @@ export const getBlogs = ({
       config,
       query: {
         limit: limit || defaultValue.limit,
-        offset: offset || defaultValue.offset,
+        offset: pageNumber * 12 || defaultValue.offset,
       },
     });
   }
@@ -70,7 +83,7 @@ export const getBlogs = ({
       config,
       query: {
         limit: limit || defaultValue.limit,
-        offset: offset || defaultValue.offset,
+        offset: pageNumber * 12 || defaultValue.offset,
         filters: `tags[contains]${tagId}[and]category[contains]${category}`,
       },
     });
@@ -81,7 +94,7 @@ export const getBlogs = ({
     config,
     query: {
       limit: limit || defaultValue.limit,
-      offset: offset || defaultValue.offset,
+      offset: pageNumber * 12 || defaultValue.offset,
       filters: tagId
         ? `tags[contains]${tagId}`
         : `category[contains]${category}`,
@@ -97,7 +110,7 @@ export const getBlogs = ({
 export const getBlogById = (id: string) => {
   if (!id) throw new Error('idが引数に渡されてません');
 
-  fetchClient.blogs._blogId(id).$get({ config });
+  return fetchClient.blogs._blogId(id).$get({ config });
 };
 
 /**

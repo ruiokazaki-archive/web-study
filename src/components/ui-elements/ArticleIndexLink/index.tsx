@@ -1,28 +1,23 @@
-import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Flex, Text } from '@chakra-ui/react';
 import { VFC } from 'react';
+
+import IndexIcon from 'assets/IndexIcon';
 
 const ArticleListLink: VFC = () => (
   <Flex
     as="a"
     href="/"
+    gap="8px"
     w="fit-content"
+    m="0 auto"
     opacity="1"
     transition="opacity 0.2s"
     _hover={{
       opacity: '0.6',
     }}
   >
-    <ArrowForwardIcon
-      w="24px"
-      h="24px"
-      color="#fff"
-      bg="main"
-      m="0 12px 0 0"
-      p="2px"
-      borderRadius="50%"
-    />
-    <Text fontWeight="bold">記事一覧へ</Text>
+    <IndexIcon />
+    <Text fontWeight="bold">トップページへ戻る</Text>
   </Flex>
 );
 

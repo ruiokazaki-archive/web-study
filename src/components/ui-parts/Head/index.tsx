@@ -15,11 +15,10 @@ const Head: VFC = () => (
       md: 'space-between',
     }}
     flexDirection={{ base: 'column', sm: 'row', md: 'row' }}
-    w="90vw"
-    maxW="1132px"
+    w="100%"
     bg="#fff"
     m="0 auto"
-    p={{ base: '8px 0', sm: '0', md: '0' }}
+    p={{ base: '8px 5vw', sm: '0 5vw', md: '0 10vw' }}
     textStyle="nav"
   >
     <Flex
@@ -60,7 +59,7 @@ const Head: VFC = () => (
       <Spacer />
       <HeadLink />
     </Flex>
-    <OriginalSpacer size="5vw" horizontal />
+    <OriginalSpacer size="5vw" horizontal head />
     <HeadSearch />
   </Flex>
 );

@@ -15,12 +15,12 @@ const Card: VFC<Props> = ({ blogData }) => (
     <Box
       as="a"
       bg="white"
-      w="30%"
+      w={{ base: '100%', sm: '48%', md: '30%' }}
       height="fit-content"
       textStyle="card"
       borderRadius="4px"
       overflow="hidden"
-      boxShadow="0px 2px 6px rgba(0, 0, 0, 0.25)"
+      boxShadow="0px 12px 31px rgba(0, 0, 0, 0.04), 0px 6.00586px 15.5151px rgba(0, 0, 0, 0.0304133), 0px 3.61765px 9.34559px rgba(0, 0, 0, 0.0260636), 0px 2.31838px 5.98915px rgba(0, 0, 0, 0.0228358), 0px 1.50259px 3.88168px rgba(0, 0, 0, 0.02), 0px 0.945861px 2.44347px rgba(0, 0, 0, 0.0171642), 0px 0.543456px 1.40393px rgba(0, 0, 0, 0.0139364), 0px 0.239189px 0.617905px rgba(0, 0, 0, 0.00958669);"
       cursor="pointer"
       transition="all 0.2s"
       _hover={{

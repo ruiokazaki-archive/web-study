@@ -1,7 +1,9 @@
 import { ChakraProvider } from '@chakra-ui/react';
+import { DefaultSeo } from 'next-seo';
 import { AppProps } from 'next/dist/shared/lib/router/router';
 
 import GoogleTagManager from 'components/GoogleTagManager';
+import SEO from 'libs/next-seo.config';
 import theme from 'theme';
 import googleTagManagerId from 'utils/gtm';
 
@@ -13,6 +15,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
+      <DefaultSeo {...SEO} />
       <GoogleTagManager googleTagManagerId={googleTagManagerId} />
       <ChakraProvider resetCSS theme={theme}>
         <AnyComponent {...pageProps} />

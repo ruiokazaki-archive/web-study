@@ -1,39 +1,111 @@
-import { Box, Flex, Heading } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
+import React from 'react';
 
+import Article from 'components/ui-parts/Article';
 import Card from 'components/ui-parts/Card';
-import { getBlogs } from 'libs/apiClient';
+import CardListTitle from 'components/ui-parts/CardListTitle';
+import Head from 'components/ui-parts/Head';
+import { getBlogs, getRcmBlogs } from 'libs/apiClient';
 import { Blog } from 'types/blog';
 
 import type { NextPage } from 'next';
 
 type Props = {
-  blogData: Blog[];
+  recommendArticles: Blog[];
+  recentArticles: Blog[];
+  designArticles: Blog[];
+  engineerArticles: Blog[];
+  columnArticles: Blog[];
 };
 
-const index: NextPage<Props> = ({ blogData }) => {
-  // eslint-disable-next-line no-console
-  console.log(blogData);
+const Index: NextPage<Props> = ({
+  recommendArticles,
+  recentArticles,
+  designArticles,
+  engineerArticles,
+  columnArticles,
+}) => {
+  const contents = [
+    {
+      title: '新着記事',
+      articles: recentArticles,
+    },
+    {
+      title: 'デザイン',
+      articles: designArticles,
+    },
+    {
+      title: 'エンジニア',
+      articles: engineerArticles,
+    },
+    {
+      title: 'コラム',
+      articles: columnArticles,
+    },
+  ];
 
   return (
-    <Box width="1000px" mx="auto">
-      <Heading as="h1">ブログ一覧</Heading>
-      <Flex flexWrap="wrap" justifyContent="space-between" gap="40px">
-        {blogData.map((blog) => (
-          <Card key={blog.id} blogData={blog} />
+    <>
+      <Head />
+      <Box as="main" mt="80px" w="90vw" mx="auto" maxW="1300px">
+        <Box mt="80px">
+          <CardListTitle title="おすすめ記事" />
+          <Flex
+            flexWrap="wrap"
+            justifyContent="space-between"
+            gap="40px 0"
+            mt="40px"
+          >
+            {recommendArticles.map((blog) => (
+              <Article blogData={blog} key={blog.id} />
+            ))}
+          </Flex>
+        </Box>
+        {contents.map(({ title, articles }) => (
+          <Box mt="80px">
+            <CardListTitle title={title} />
+            <Flex
+              flexWrap="wrap"
+              justifyContent="space-between"
+              gap="40px 0"
+              mt="40px"
+            >
+              {articles.map((blog) => (
+                <Card blogData={blog} key={blog.id} />
+              ))}
+            </Flex>
+          </Box>
         ))}
-      </Flex>
-    </Box>
+      </Box>
+    </>
   );
 };
-
 export const getStaticProps = async () => {
-  const microCMSBlogs = await getBlogs({ limit: 1000 });
+  const microCMSRecommendArticles = await getRcmBlogs();
+  const recommendArticles = microCMSRecommendArticles.contents;
+  let recommendArticlesLength = recommendArticles.length;
+
+  while (recommendArticlesLength) {
+    const j = Math.floor(Math.random() * recommendArticlesLength);
+    const t = recommendArticles[(recommendArticlesLength -= 1)];
+    recommendArticles[recommendArticlesLength] = recommendArticles[j];
+    recommendArticles[j] = t;
+  }
+
+  const recentArticles = await getBlogs({ limit: 3 });
+  const designArticles = await getBlogs({ limit: 3, category: 'design' });
+  const engineerArticles = await getBlogs({ limit: 3, category: 'engineer' });
+  const columnArticles = await getBlogs({ limit: 3, category: 'column' });
 
   return {
     props: {
-      blogData: microCMSBlogs.contents,
+      recommendArticles: recommendArticles.slice(0, 2),
+      recentArticles: recentArticles.contents,
+      designArticles: designArticles.contents,
+      engineerArticles: engineerArticles.contents,
+      columnArticles: columnArticles.contents,
     },
   };
 };
 
-export default index;
+export default Index;

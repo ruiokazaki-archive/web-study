@@ -13,7 +13,7 @@ const CardAuthor: VFC<Props> = ({ author }) => {
   const authorInfo = getAuthorInfo(author);
 
   return (
-    <Flex as={Text} textStyle="article.text" fontWeight="bold" color="main">
+    <Flex as={Text} textStyle="article.text" color="main" alignItems="center">
       <Icon
         as={authorInfo.authorIcon}
         borderRadius="9999px"
