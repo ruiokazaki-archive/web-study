@@ -19,7 +19,7 @@ const index: NextPage<Props> = ({ blogData }) => (
       flexWrap="wrap"
       justifyContent="space-between"
       gap="40px 0"
-      maxW="1000px"
+      maxW="1300px"
       w="90vw"
       m="0 auto"
     >

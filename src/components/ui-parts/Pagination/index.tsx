@@ -1,34 +1,7 @@
-import { Box, Flex } from '@chakra-ui/react';
-import NextLink from 'next/link';
-import { ReactNode, VFC } from 'react';
+import { Flex } from '@chakra-ui/react';
+import { VFC } from 'react';
 
-type CircleProps = {
-  pageNumber: number;
-  currentPage?: boolean;
-  children: ReactNode;
-};
-
-const Circle: VFC<CircleProps> = ({
-  pageNumber,
-  currentPage = false,
-  children,
-}) => (
-  <NextLink href={`/${pageNumber}`}>
-    <Box
-      w="48px"
-      h="48px"
-      cursor="pointer"
-      borderRadius="full"
-      textAlign="center"
-      lineHeight="48px"
-      bg={currentPage ? 'main' : 'transparent'}
-      color={currentPage ? 'white' : 'text'}
-      textStyle="pagination"
-    >
-      {children}
-    </Box>
-  </NextLink>
-);
+import Circle from 'components/ui-elements/PaginationCircle';
 
 type Props = {
   totalBlogCount: number;

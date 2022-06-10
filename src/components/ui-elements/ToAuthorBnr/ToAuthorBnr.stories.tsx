@@ -8,5 +8,5 @@ export default {
 } as ComponentMeta<typeof ToAuthorBnr>;
 
 export const Default1: ComponentStory<typeof ToAuthorBnr> = () => (
-  <ToAuthorBnr></ToAuthorBnr>
+  <ToAuthorBnr />
 );
