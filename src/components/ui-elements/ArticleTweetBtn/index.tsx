@@ -17,8 +17,7 @@ const linkData = {
 
 const ArticleTweetBtn: VFC<Props> = () => {
   const router = useRouter();
-  const origin =
-    typeof window !== 'undefined' && window.location.origin
+  const origin = typeof window !== 'undefined' && window.location.origin
       ? window.location.origin
       : '';
   const url = `${origin}${router.asPath}`;
