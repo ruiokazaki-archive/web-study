@@ -1,9 +1,9 @@
 import { Box, Flex } from '@chakra-ui/react';
-import React from 'react';
 
 import Article from 'components/ui-parts/Article';
 import Card from 'components/ui-parts/Card';
 import CardListTitle from 'components/ui-parts/CardListTitle';
+import Footer from 'components/ui-parts/Footer';
 import Head from 'components/ui-parts/Head';
 import { getBlogs, getRcmBlogs } from 'libs/apiClient';
 import { Blog } from 'types/blog';
@@ -47,7 +47,7 @@ const Index: NextPage<Props> = ({
   return (
     <>
       <Head />
-      <Box as="main" mt="80px" w="90vw" mx="auto" maxW="1300px">
+      <Box as="main" my="80px" w="90vw" mx="auto" maxW="1300px">
         <Box mt="80px">
           <CardListTitle title="おすすめ記事" />
           <Flex
@@ -77,6 +77,7 @@ const Index: NextPage<Props> = ({
           </Box>
         ))}
       </Box>
+      <Footer />
     </>
   );
 };
