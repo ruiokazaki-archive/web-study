@@ -16,7 +16,9 @@ const Tag: VFC<Props> = ({ tag, tagUrl }) => (
       fontSize="12px"
       _hover={{ opacity: '0.5' }}
     >
-      # {tag}
+      #
+{' '}
+{tag}
     </Button>
   </Link>
 );

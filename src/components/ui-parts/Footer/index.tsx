@@ -37,20 +37,22 @@ const footerItems = {
     },
   ],
   tags: [
-    '# React',
-    '# React',
-    '# React',
-    '# React',
-    '# React',
-    '# React',
-    '# React',
-    '# React',
+    'React',
+    'React',
+    'React',
+    'React',
+    'React',
+    'React',
+    'React',
+    'React',
+    'React',
+    'React',
   ],
 };
 
 const Footer: VFC = () => (
   <Grid
-    w="100vw"
+    w="90vw"
     maxW="1300px"
     m="auto"
     templateRows={{ base: 'repeat(4)', md: 'repeat(1)' }}
@@ -61,38 +63,29 @@ const Footer: VFC = () => (
     <GridItem mr={{ base: 0, md: '50px' }}>
       <FooterLoge />
     </GridItem>
-
-    {/* <FooterTitle /> */}
     <GridItem rowSpan={1} colSpan={1}>
       <FooterTitle title="概要" />
-
       {footerItems.siteMap.map((item) => (
         <Box mb="16px">
           <FooterText about={item.about} url={item.url} />
         </Box>
       ))}
     </GridItem>
-
     <GridItem rowSpan={1} colSpan={1}>
       <FooterTitle title="カテゴリ" />
-
       {footerItems.categories.map((item) => (
         <Box mb="16px">
           <FooterText about={item.about} url={item.url} />
         </Box>
       ))}
     </GridItem>
-
     <GridItem rowSpan={1} colSpan={{ base: 1, md: 2 }}>
       <FooterTitle title="タグ" />
-
       {footerItems.tags.map((tag) => (
         <Tag tag={tag} tagUrl="/" />
       ))}
     </GridItem>
-
     <GridItem
-      // display={{ base: 'none', md: 'block' }}
       rowSpan={1}
       colSpan={{ base: 1, md: 5 }}
       borderTop="1px"
