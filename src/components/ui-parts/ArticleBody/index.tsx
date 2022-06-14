@@ -18,7 +18,9 @@ const ArticleBody: VFC<Props> = ({ data }) => (
       dangerouslySetInnerHTML={{
         // eslint-disable-next-line max-len
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-        __html: sanitizeHtml(data.body),
+        __html: sanitizeHtml(data.body, {
+          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
+        }),
       }}
     />
     <OriginalSpacer size="64px" />
