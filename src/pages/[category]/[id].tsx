@@ -53,18 +53,31 @@ export const getStaticPaths = async () => {
 
   const microCMSBlogs = await getBlogs({ limit: 1000 });
 
-  const paths = categories.map((category) => ({
-    params: {
-      id: Math.ceil(
-        // eslint-disable-next-line max-len
-        microCMSBlogs.contents.filter(
-          (item) =>
-            JSON.stringify(item.category) === JSON.stringify([category]),
-        ).length / 12,
-      ).toString(),
-      category,
-    },
-  }));
+  const paths: {
+    params: { category: string; id: string };
+  }[] = [];
+  categories.forEach((category) => {
+    const id = [
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      ...new Array(
+        Math.ceil(
+          microCMSBlogs.contents.filter(
+            (item) =>
+              JSON.stringify(item.category) === JSON.stringify([category]),
+          ).length / 12,
+        ),
+      ),
+    ].map((_, i) => i + 1);
+
+    id.forEach((i) => {
+      paths.push({
+        params: {
+          id: String(i),
+          category,
+        },
+      });
+    });
+  });
 
   return {
     paths,
