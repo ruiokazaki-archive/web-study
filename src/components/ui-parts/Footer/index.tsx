@@ -60,7 +60,7 @@ const Footer: VFC<Props> = ({ tags }) => (
     <GridItem rowSpan={1} colSpan={1}>
       <FooterTitle title="概要" />
       {footerItems.siteMap.map((item) => (
-        <Box mb="16px">
+        <Box mb="16px" key={item.about}>
           <FooterText about={item.about} url={item.url} />
         </Box>
       ))}
@@ -68,7 +68,7 @@ const Footer: VFC<Props> = ({ tags }) => (
     <GridItem rowSpan={1} colSpan={1}>
       <FooterTitle title="カテゴリ" />
       {footerItems.categories.map((item) => (
-        <Box mb="16px">
+        <Box mb="16px" key={item.about}>
           <FooterText about={item.about} url={item.url} />
         </Box>
       ))}
@@ -76,7 +76,7 @@ const Footer: VFC<Props> = ({ tags }) => (
     <GridItem rowSpan={1} colSpan={{ base: 1, md: 2 }}>
       <FooterTitle title="タグ" />
       {tags.map((tag) => (
-        <Tag tag={tag.nameJa} tagUrl={`${tag.nameEn}`} />
+        <Tag key={tag.id} tag={tag.nameJa} tagUrl={`${tag.nameEn}`} />
       ))}
     </GridItem>
     <GridItem
@@ -91,4 +91,5 @@ const Footer: VFC<Props> = ({ tags }) => (
     </GridItem>
   </Grid>
 );
+
 export default Footer;

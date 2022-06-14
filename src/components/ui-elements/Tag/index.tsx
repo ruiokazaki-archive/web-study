@@ -5,7 +5,7 @@ import { VFC } from 'react';
 type Props = { tag: string; tagUrl: string };
 
 const Tag: VFC<Props> = ({ tag, tagUrl }) => (
-  <Link href={`/tags/${tagUrl}`}>
+  <Link href={`/tag/${tagUrl}`}>
     <Button
       colorScheme="gray"
       variant="outline"
@@ -16,9 +16,7 @@ const Tag: VFC<Props> = ({ tag, tagUrl }) => (
       fontSize="12px"
       _hover={{ opacity: '0.5' }}
     >
-      #
-{' '}
-{tag}
+      {`# ${tag}`}
     </Button>
   </Link>
 );

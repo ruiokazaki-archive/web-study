@@ -63,7 +63,7 @@ const Index: NextPage<Props> = ({
           </Flex>
         </Box>
         {contents.map(({ title, articles }) => (
-          <Box mt="80px">
+          <Box mt="80px" key={title}>
             <CardListTitle title={title} />
             <Flex
               flexWrap="wrap"
