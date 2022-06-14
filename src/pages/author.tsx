@@ -4,15 +4,20 @@ import { NextSeo } from 'next-seo';
 
 import AuthorInfo from 'components/ui-elements/AuthorInfo';
 import OriginalSpacer from 'components/ui-elements/OriginalSpacer';
-import Head from 'components/ui-parts/Head';
+import Layout from 'components/ui-parts/Layout';
+import { getTags } from 'libs/apiClient';
+import { Tag } from 'types/tag';
 
-const AuthorList: NextPage = () => (
-  <>
+type Props = {
+  tags: Tag[];
+};
+
+const AuthorList: NextPage<Props> = ({ tags }) => (
+  <Layout tags={tags}>
     <NextSeo
       title="メンバー紹介"
       description="うぇぶスタの記事を書いているゆかいな仲間たちです！"
     />
-    <Head />
     <Flex
       as="h2"
       justifyContent="center"
@@ -22,7 +27,7 @@ const AuthorList: NextPage = () => (
       fontSize="32px"
       fontWeight="bold"
       bgImage={{
-        sm: 'url("https://images.microcms-assets.io/assets/d9db883bc929477a9cbafcb351fa25df/f5b10df0ab7e4d849b08db6b36c10332/author_head.png?w=2000")',
+        sm: 'url("https://images.microcms-assets.io/assets/d9db883bc929477a9cbafcb351fa25df/f5b10df0ab7e4d849b08db6b36c10332/author_head.png?w=1000")',
         md: 'url("https://images.microcms-assets.io/assets/d9db883bc929477a9cbafcb351fa25df/f5b10df0ab7e4d849b08db6b36c10332/author_head.png?w=2000")',
       }}
       bgColor="main"
@@ -39,6 +44,17 @@ const AuthorList: NextPage = () => (
     </Flex>
     <AuthorInfo />
     <OriginalSpacer size="80px" />
-  </>
+  </Layout>
 );
+
 export default AuthorList;
+
+export const getStaticProps = async () => {
+  const microCMSTags = await getTags();
+
+  return {
+    props: {
+      tags: microCMSTags.contents,
+    },
+  };
+};

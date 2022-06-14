@@ -3,10 +3,10 @@ import { Box, Flex } from '@chakra-ui/react';
 import Article from 'components/ui-parts/Article';
 import Card from 'components/ui-parts/Card';
 import CardListTitle from 'components/ui-parts/CardListTitle';
-import Footer from 'components/ui-parts/Footer';
-import Head from 'components/ui-parts/Head';
-import { getBlogs, getRcmBlogs } from 'libs/apiClient';
+import Layout from 'components/ui-parts/Layout';
+import { getBlogs, getRcmBlogs, getTags } from 'libs/apiClient';
 import { Blog } from 'types/blog';
+import { Tag } from 'types/tag';
 
 import type { NextPage } from 'next';
 
@@ -16,6 +16,7 @@ type Props = {
   designArticles: Blog[];
   engineerArticles: Blog[];
   columnArticles: Blog[];
+  tags: Tag[];
 };
 
 const Index: NextPage<Props> = ({
@@ -24,6 +25,7 @@ const Index: NextPage<Props> = ({
   designArticles,
   engineerArticles,
   columnArticles,
+  tags,
 }) => {
   const contents = [
     {
@@ -45,8 +47,7 @@ const Index: NextPage<Props> = ({
   ];
 
   return (
-    <>
-      <Head />
+    <Layout tags={tags}>
       <Box as="main" my="80px" w="90vw" mx="auto" maxW="1300px">
         <Box mt="80px">
           <CardListTitle title="おすすめ記事" />
@@ -77,10 +78,10 @@ const Index: NextPage<Props> = ({
           </Box>
         ))}
       </Box>
-      <Footer />
-    </>
+    </Layout>
   );
 };
+
 export const getStaticProps = async () => {
   const microCMSRecommendArticles = await getRcmBlogs();
   const recommendArticles = microCMSRecommendArticles.contents;
@@ -98,6 +99,8 @@ export const getStaticProps = async () => {
   const engineerArticles = await getBlogs({ limit: 3, category: 'engineer' });
   const columnArticles = await getBlogs({ limit: 3, category: 'column' });
 
+  const microCMSTags = await getTags();
+
   return {
     props: {
       recommendArticles: recommendArticles.slice(0, 2),
@@ -105,6 +108,7 @@ export const getStaticProps = async () => {
       designArticles: designArticles.contents,
       engineerArticles: engineerArticles.contents,
       columnArticles: columnArticles.contents,
+      tags: microCMSTags.contents,
     },
   };
 };

@@ -7,26 +7,27 @@ import ArticleTweetBtn from 'components/ui-elements/ArticleTweetBtn';
 import OriginalSpacer from 'components/ui-elements/OriginalSpacer';
 import ArticleBody from 'components/ui-parts/ArticleBody';
 import ArticleRcm from 'components/ui-parts/ArticleRcm';
-import Head from 'components/ui-parts/Head';
-import { getBlogById, getBlogs, getRcmBlogs } from 'libs/apiClient';
+import Layout from 'components/ui-parts/Layout';
+import { getBlogById, getBlogs, getRcmBlogs, getTags } from 'libs/apiClient';
 import { Blog } from 'types/blog';
+import { Tag } from 'types/tag';
 
 import type { NextPage } from 'next';
 
 type Props = {
   blogData: Blog;
   rcmData: Blog[];
+  tags: Tag[];
 };
 
-const Article: NextPage<Props> = ({ blogData, rcmData }) => (
-  <>
+const Article: NextPage<Props> = ({ blogData, rcmData, tags }) => (
+  <Layout tags={tags}>
     <NextSeo
       title={blogData.title}
       description={`この記事では${blogData.tags
         .map((item) => item.nameJa)
         .join('、')}について掲載しています！`}
     />
-    <Head />
     <Box
       w={{
         base: '90vw',
@@ -48,7 +49,7 @@ const Article: NextPage<Props> = ({ blogData, rcmData }) => (
     <OriginalSpacer size="56px" />
     <ArticleRcm blogData={rcmData} />
     <OriginalSpacer size="160px" />
-  </>
+  </Layout>
 );
 export const getStaticPaths = async () => {
   const microCMSBlogs = await getBlogs({ limit: 1000 });
@@ -79,10 +80,13 @@ export const getStaticProps = async ({
     rcmBlogs[j] = t;
   }
 
+  const microCMSTags = await getTags();
+
   return {
     props: {
       blogData: data,
       rcmData: rcmBlogs.slice(0, 3),
+      tags: microCMSTags.contents,
     },
   };
 };
