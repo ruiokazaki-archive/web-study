@@ -47,7 +47,8 @@ const Footer: VFC<Props> = ({ tags }) => (
   <Grid
     w="90vw"
     maxW="1300px"
-    m="auto"
+    mt="80px"
+    mx="auto"
     templateRows={{ base: 'repeat(4)', md: 'repeat(1)' }}
     templateColumns={{ base: 'repeat(1)', md: 'repeat(5,1fr)' }}
     gap={5}
