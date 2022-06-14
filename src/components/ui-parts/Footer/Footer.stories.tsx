@@ -1,5 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { Tag } from 'types/tag';
+
 import Footer from './index';
 
 export default {
@@ -7,4 +9,18 @@ export default {
   component: Footer,
 } as ComponentMeta<typeof Footer>;
 
-export const Default1: ComponentStory<typeof Footer> = () => <Footer />;
+const tags: Tag[] = [
+  {
+    nameEn: 'design',
+    nameJa: 'デザイン',
+    id: 'string',
+    createdAt: 'string',
+    updatedAt: 'string',
+    publishedAt: 'string',
+    revisedAt: 'string',
+  },
+];
+
+export const Default1: ComponentStory<typeof Footer> = () => (
+  <Footer tags={tags} />
+);
