@@ -44,20 +44,34 @@ const Index: NextPage<Props> = ({ blogData, tagName, currentPage, tags }) => (
 
 export const getStaticPaths = async () => {
   const microCMSTags = await getTags();
-
   const microCMSBlogs = await getBlogs({ limit: 1000 });
 
-  const paths = microCMSTags.contents.map((tag) => ({
-    params: {
-      id: Math.ceil(
-        microCMSBlogs.contents.filter(
-          (item) =>
-            item.tags.filter((itemTag) => itemTag.id === tag.id).length !== 0,
-        ).length / 12,
-      ).toString(),
-      tag: tag.nameEn,
-    },
-  }));
+  const paths: {
+    params: { tag: string; id: string };
+  }[] = [];
+
+  microCMSTags.contents.forEach((tag) => {
+    const id = [
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      ...new Array(
+        Math.ceil(
+          microCMSBlogs.contents.filter(
+            (item) =>
+              item.tags.filter((itemTag) => itemTag.id === tag.id).length !== 0,
+          ).length / 12,
+        ),
+      ),
+    ].map((_, i) => i + 1);
+
+    id.forEach((i) => {
+      paths.push({
+        params: {
+          id: String(i),
+          tag: tag.nameEn,
+        },
+      });
+    });
+  });
 
   return {
     paths,
