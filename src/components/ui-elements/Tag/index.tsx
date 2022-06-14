@@ -5,7 +5,7 @@ import { VFC } from 'react';
 type Props = { tag: string; tagUrl: string };
 
 const Tag: VFC<Props> = ({ tag, tagUrl }) => (
-  <Link href={tagUrl}>
+  <Link href={`/tags/${tagUrl}`}>
     <Button
       colorScheme="gray"
       variant="outline"
