@@ -142,6 +142,16 @@ export const getNewsById = (id: string) =>
   fetchClient.news._newsId(id).$get({ config });
 
 /**
+ * タグを全件取得します
+ * @date 2022-06-14
+ */
+export const getTags = () =>
+  fetchClient.tags.$get({
+    config,
+    query: { limit: 1000 },
+  });
+
+/**
  * タグ名を渡すと、タグIdを返却します
  * @date 2022-05-18
  * @param { string } name
