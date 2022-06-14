@@ -2,11 +2,12 @@ import { Box, Center, Flex } from '@chakra-ui/react';
 
 import Card from 'components/ui-parts/Card';
 import CardListTitle from 'components/ui-parts/CardListTitle';
-import Head from 'components/ui-parts/Head';
+import Layout from 'components/ui-parts/Layout';
 import Pagination from 'components/ui-parts/Pagination';
-import { getBlogs } from 'libs/apiClient';
+import { getBlogs, getTags } from 'libs/apiClient';
 import { Blog, Category } from 'types/blog';
 import { MicroCMSList } from 'types/microCMS';
+import { Tag } from 'types/tag';
 
 import type { NextPage } from 'next';
 
@@ -14,6 +15,7 @@ type Props = {
   blogData: MicroCMSList<Blog>;
   category: Category;
   currentPage: string;
+  tags: Tag[];
 };
 
 const categoryCorrespondenceTable: { [K in Category]: string } = {
@@ -22,9 +24,8 @@ const categoryCorrespondenceTable: { [K in Category]: string } = {
   design: 'デザイン',
 };
 
-const Index: NextPage<Props> = ({ blogData, category, currentPage }) => (
-  <>
-    <Head />
+const Index: NextPage<Props> = ({ blogData, category, currentPage, tags }) => (
+  <Layout tags={tags}>
     <Box as="main" mt="80px" w="90vw" mx="auto" maxW="1300px">
       <CardListTitle title={categoryCorrespondenceTable[category]} />
       <Flex
@@ -44,7 +45,7 @@ const Index: NextPage<Props> = ({ blogData, category, currentPage }) => (
         />
       </Center>
     </Box>
-  </>
+  </Layout>
 );
 
 export const getStaticPaths = async () => {
@@ -81,11 +82,14 @@ export const getStaticProps = async ({
     pageNumber: Number(params.id),
   });
 
+  const microCMSTags = await getTags();
+
   return {
     props: {
       blogData,
       category: params.category,
       currentPage: params.id,
+      tags: microCMSTags.contents,
     },
   };
 };

@@ -72,7 +72,7 @@ export const getBlogs = ({
       config,
       query: {
         limit: limit || defaultValue.limit,
-        offset: pageNumber * 12 || defaultValue.offset,
+        offset: (pageNumber - 1) * 12 || defaultValue.offset,
       },
     });
   }
@@ -83,7 +83,7 @@ export const getBlogs = ({
       config,
       query: {
         limit: limit || defaultValue.limit,
-        offset: pageNumber * 12 || defaultValue.offset,
+        offset: (pageNumber - 1) * 12 || defaultValue.offset,
         filters: `tags[contains]${tagId}[and]category[contains]${category}`,
       },
     });
@@ -94,7 +94,7 @@ export const getBlogs = ({
     config,
     query: {
       limit: limit || defaultValue.limit,
-      offset: pageNumber * 12 || defaultValue.offset,
+      offset: (pageNumber - 1) * 12 || defaultValue.offset,
       filters: tagId
         ? `tags[contains]${tagId}`
         : `category[contains]${category}`,
@@ -140,6 +140,16 @@ export const getNews = ({
  */
 export const getNewsById = (id: string) =>
   fetchClient.news._newsId(id).$get({ config });
+
+/**
+ * タグを全件取得します
+ * @date 2022-06-14
+ */
+export const getTags = () =>
+  fetchClient.tags.$get({
+    config,
+    query: { limit: 1000 },
+  });
 
 /**
  * タグ名を渡すと、タグIdを返却します

@@ -6,53 +6,49 @@ import FooterInner from 'components/ui-elements/FooterInner';
 import FooterText from 'components/ui-elements/FooterText';
 import FooterTitle from 'components/ui-elements/FooterTitle';
 import Tag from 'components/ui-elements/Tag';
+import { Tag as TagType } from 'types/tag';
 
 const footerItems = {
   siteMap: [
     {
       about: 'うぇぶスタについて',
-      url: 'https://chakra-ui.com/docs/components/navigation/link',
+      url: '/',
     },
     {
       about: '学習相談はこちらから',
-      url: 'https://nextjs.org/docs/api-reference/next/link',
+      url: '/',
     },
     {
       about: 'メンバー紹介',
-      url: 'https://github.com/OkazakiRui/web-study',
+      url: '/author',
     },
   ],
   categories: [
     {
       about: 'デザイン',
-      url: 'https://dhsakjflsajfd',
+      url: '/design',
     },
     {
       about: 'コラム',
-      url: 'https://dhsakjflsajfd',
+      url: '/column',
     },
     {
-      about: 'フロントエンド',
-      url: 'https://dhsakjflsajfd',
+      about: 'エンジニア',
+      url: '/engineer',
     },
-  ],
-  tags: [
-    '# React',
-    '# React',
-    '# React',
-    '# React',
-    '# React',
-    '# React',
-    '# React',
-    '# React',
   ],
 };
 
-const Footer: VFC = () => (
+type Props = {
+  tags: TagType[];
+};
+
+const Footer: VFC<Props> = ({ tags }) => (
   <Grid
-    w="100vw"
+    w="90vw"
     maxW="1300px"
-    m="auto"
+    mt="80px"
+    mx="auto"
     templateRows={{ base: 'repeat(4)', md: 'repeat(1)' }}
     templateColumns={{ base: 'repeat(1)', md: 'repeat(5,1fr)' }}
     gap={5}
@@ -61,38 +57,29 @@ const Footer: VFC = () => (
     <GridItem mr={{ base: 0, md: '50px' }}>
       <FooterLoge />
     </GridItem>
-
-    {/* <FooterTitle /> */}
     <GridItem rowSpan={1} colSpan={1}>
       <FooterTitle title="概要" />
-
       {footerItems.siteMap.map((item) => (
         <Box mb="16px">
           <FooterText about={item.about} url={item.url} />
         </Box>
       ))}
     </GridItem>
-
     <GridItem rowSpan={1} colSpan={1}>
       <FooterTitle title="カテゴリ" />
-
       {footerItems.categories.map((item) => (
         <Box mb="16px">
           <FooterText about={item.about} url={item.url} />
         </Box>
       ))}
     </GridItem>
-
     <GridItem rowSpan={1} colSpan={{ base: 1, md: 2 }}>
       <FooterTitle title="タグ" />
-
-      {footerItems.tags.map((tag) => (
-        <Tag tag={tag} tagUrl="/" />
+      {tags.map((tag) => (
+        <Tag tag={tag.nameJa} tagUrl={`${tag.nameEn}`} />
       ))}
     </GridItem>
-
     <GridItem
-      // display={{ base: 'none', md: 'block' }}
       rowSpan={1}
       colSpan={{ base: 1, md: 5 }}
       borderTop="1px"
