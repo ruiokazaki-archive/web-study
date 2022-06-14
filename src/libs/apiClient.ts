@@ -72,7 +72,7 @@ export const getBlogs = ({
       config,
       query: {
         limit: limit || defaultValue.limit,
-        offset: pageNumber * 12 || defaultValue.offset,
+        offset: (pageNumber - 1) * 12 || defaultValue.offset,
       },
     });
   }
@@ -83,7 +83,7 @@ export const getBlogs = ({
       config,
       query: {
         limit: limit || defaultValue.limit,
-        offset: pageNumber * 12 || defaultValue.offset,
+        offset: (pageNumber - 1) * 12 || defaultValue.offset,
         filters: `tags[contains]${tagId}[and]category[contains]${category}`,
       },
     });
@@ -94,7 +94,7 @@ export const getBlogs = ({
     config,
     query: {
       limit: limit || defaultValue.limit,
-      offset: pageNumber * 12 || defaultValue.offset,
+      offset: (pageNumber - 1) * 12 || defaultValue.offset,
       filters: tagId
         ? `tags[contains]${tagId}`
         : `category[contains]${category}`,
