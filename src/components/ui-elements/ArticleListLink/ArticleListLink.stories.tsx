@@ -8,5 +8,5 @@ export default {
 } as ComponentMeta<typeof ArticleListLink>;
 
 export const Default1: ComponentStory<typeof ArticleListLink> = () => (
-  <ArticleListLink />
+  <ArticleListLink category="design" />
 );

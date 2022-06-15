@@ -1,6 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react';
 
 import Article from 'components/ui-parts/Article';
+import ArticleListHead from 'components/ui-parts/ArticleListHead';
 import Card from 'components/ui-parts/Card';
 import CardListTitle from 'components/ui-parts/CardListTitle';
 import Layout from 'components/ui-parts/Layout';
@@ -31,18 +32,22 @@ const Index: NextPage<Props> = ({
     {
       title: '新着記事',
       articles: recentArticles,
+      category: 'blogs',
     },
     {
       title: 'デザイン',
       articles: designArticles,
+      category: 'design',
     },
     {
       title: 'エンジニア',
       articles: engineerArticles,
+      category: 'engineer',
     },
     {
       title: 'コラム',
       articles: columnArticles,
+      category: 'column',
     },
   ];
 
@@ -62,9 +67,9 @@ const Index: NextPage<Props> = ({
             ))}
           </Flex>
         </Box>
-        {contents.map(({ title, articles }) => (
+        {contents.map(({ title, articles, category }) => (
           <Box mt="80px" key={title}>
-            <CardListTitle title={title} />
+            <ArticleListHead title={title} category={category} />
             <Flex
               flexWrap="wrap"
               justifyContent="space-between"
