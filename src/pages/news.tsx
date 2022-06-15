@@ -3,19 +3,19 @@ import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
 import NewTitle from 'components/ui-elements/NewsTitle';
-import Footer from 'components/ui-parts/Footer';
-import Head from 'components/ui-parts/Head';
-import { getNews } from 'libs/apiClient';
+import Layout from 'components/ui-parts/Layout';
+import { getNews, getTags } from 'libs/apiClient';
 import { News } from 'types/news';
+import { Tag } from 'types/tag';
 
 type Props = {
-  newData: News[];
+  newsData: News[];
+  tagsData: Tag[];
 };
 
-const news: NextPage<Props> = ({ newData }) => (
-  <>
+const news: NextPage<Props> = ({ newsData, tagsData }) => (
+  <Layout tags={tagsData}>
     <NextSeo title="うぇぶスタNEWS" description="Web制作に関する情報を発信" />
-    <Head />
 
     <Box
       w="90vw"
@@ -28,7 +28,7 @@ const news: NextPage<Props> = ({ newData }) => (
         うぇぶスタNEWS
       </Text>
 
-      {newData.map((data) => (
+      {newsData.map((data) => (
         <NewTitle
           key={data.id}
           newsTitle={data.title}
@@ -38,17 +38,17 @@ const news: NextPage<Props> = ({ newData }) => (
         />
       ))}
     </Box>
-
-    <Footer />
-  </>
+  </Layout>
 );
 
 export const getStaticProps = async () => {
-  const microCMSData = await getNews();
+  const microCMSNews = await getNews();
+  const microCMSTags = await getTags();
 
   return {
     props: {
-      newData: microCMSData.contents,
+      newsData: microCMSNews.contents,
+      tagsData: microCMSTags.contents,
     },
   };
 };
