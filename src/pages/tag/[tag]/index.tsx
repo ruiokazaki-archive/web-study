@@ -4,8 +4,8 @@ import Card from 'components/ui-parts/Card';
 import CardListTitle from 'components/ui-parts/CardListTitle';
 import Layout from 'components/ui-parts/Layout';
 import Pagination from 'components/ui-parts/Pagination';
-import { getBlogs, getTags } from 'libs/apiClient';
-import { Blog, Category } from 'types/blog';
+import { getBlogs, getTags, getTagsIdByName } from 'libs/apiClient';
+import { Blog } from 'types/blog';
 import { MicroCMSList } from 'types/microCMS';
 import { Tag } from 'types/tag';
 
@@ -13,20 +13,14 @@ import type { NextPage } from 'next';
 
 type Props = {
   blogData: MicroCMSList<Blog>;
-  category: Category;
+  tagName: string;
   tags: Tag[];
 };
 
-const categoryCorrespondenceTable: { [K in Category]: string } = {
-  column: 'コラム',
-  engineer: 'エンジニア',
-  design: 'デザイン',
-};
-
-const Index: NextPage<Props> = ({ blogData, category, tags }) => (
+const Index: NextPage<Props> = ({ blogData, tagName, tags }) => (
   <Layout tags={tags}>
     <Box as="main" mt="80px" w="90vw" mx="auto" maxW="1300px">
-      <CardListTitle title={categoryCorrespondenceTable[category]} />
+      <CardListTitle title={`タグ：${tagName}`} />
       <Flex
         flexWrap="wrap"
         justifyContent="space-between"
@@ -44,11 +38,13 @@ const Index: NextPage<Props> = ({ blogData, category, tags }) => (
   </Layout>
 );
 
-export const getStaticPaths = () => {
-  const categories = ['design', 'engineer', 'column'];
+export const getStaticPaths = async () => {
+  const microCMSTags = await getTags();
 
   return {
-    paths: categories.map((category) => ({ params: { category } })),
+    paths: microCMSTags.contents.map((tag) => ({
+      params: { tag: tag.nameEn },
+    })),
     fallback: false,
   };
 };
@@ -56,15 +52,17 @@ export const getStaticPaths = () => {
 export const getStaticProps = async ({
   params,
 }: {
-  params: { category: Category };
+  params: { tag: Tag['nameEn'] };
 }) => {
-  const blogData = await getBlogs({ category: params.category });
+  const microCMSTag = await getTagsIdByName(params.tag);
+
+  const blogData = await getBlogs({ tagId: microCMSTag.contents[0].id });
   const microCMSTags = await getTags();
 
   return {
     props: {
       blogData,
-      category: params.category,
+      tagName: microCMSTag.contents[0].nameJa,
       tags: microCMSTags.contents,
     },
   };

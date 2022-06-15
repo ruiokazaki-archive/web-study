@@ -2,12 +2,12 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Tag } from 'types/tag';
 
-import Footer from './index';
+import Layout from './index';
 
 export default {
-  title: 'ui-parts/Footer',
-  component: Footer,
-} as ComponentMeta<typeof Footer>;
+  title: 'ui-parts/Layout',
+  component: Layout,
+} as ComponentMeta<typeof Layout>;
 
 const tags: Tag[] = [
   {
@@ -21,6 +21,6 @@ const tags: Tag[] = [
   },
 ];
 
-export const Default1: ComponentStory<typeof Footer> = () => (
-  <Footer tags={tags} />
+export const Default1: ComponentStory<typeof Layout> = () => (
+  <Layout tags={tags}>contenst</Layout>
 );

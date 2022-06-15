@@ -15,10 +15,13 @@ const Circle: VFC<CircleProps> = ({
   children,
 }) => {
   const router = useRouter();
-  const pathCategory = router.query.category as string;
+
+  const path = router.asPath.split('/')[1] === 'tag'
+      ? router.asPath.split('/').slice(1, 3).join('/')
+      : router.asPath.split('/').slice(1, 2).join('/');
 
   return (
-    <NextLink href={`${pathCategory}/${pageNumber}`}>
+    <NextLink href={`/${path}/${pageNumber}`}>
       <Box
         w="48px"
         h="48px"

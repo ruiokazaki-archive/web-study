@@ -5,7 +5,7 @@ import CardListTitle from 'components/ui-parts/CardListTitle';
 import Layout from 'components/ui-parts/Layout';
 import Pagination from 'components/ui-parts/Pagination';
 import { getBlogs, getTags } from 'libs/apiClient';
-import { Blog, Category } from 'types/blog';
+import { Blog } from 'types/blog';
 import { MicroCMSList } from 'types/microCMS';
 import { Tag } from 'types/tag';
 
@@ -13,20 +13,13 @@ import type { NextPage } from 'next';
 
 type Props = {
   blogData: MicroCMSList<Blog>;
-  category: Category;
   tags: Tag[];
 };
 
-const categoryCorrespondenceTable: { [K in Category]: string } = {
-  column: 'コラム',
-  engineer: 'エンジニア',
-  design: 'デザイン',
-};
-
-const Index: NextPage<Props> = ({ blogData, category, tags }) => (
+const Index: NextPage<Props> = ({ blogData, tags }) => (
   <Layout tags={tags}>
     <Box as="main" mt="80px" w="90vw" mx="auto" maxW="1300px">
-      <CardListTitle title={categoryCorrespondenceTable[category]} />
+      <CardListTitle title="全ての投稿記事" />
       <Flex
         flexWrap="wrap"
         justifyContent="space-between"
@@ -44,27 +37,13 @@ const Index: NextPage<Props> = ({ blogData, category, tags }) => (
   </Layout>
 );
 
-export const getStaticPaths = () => {
-  const categories = ['design', 'engineer', 'column'];
-
-  return {
-    paths: categories.map((category) => ({ params: { category } })),
-    fallback: false,
-  };
-};
-
-export const getStaticProps = async ({
-  params,
-}: {
-  params: { category: Category };
-}) => {
-  const blogData = await getBlogs({ category: params.category });
+export const getStaticProps = async () => {
+  const blogData = await getBlogs();
   const microCMSTags = await getTags();
 
   return {
     props: {
       blogData,
-      category: params.category,
       tags: microCMSTags.contents,
     },
   };
