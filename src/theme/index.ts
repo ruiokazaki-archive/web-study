@@ -17,10 +17,14 @@ const textStyles = {
     fontSize: { base: '12px', sm: '12px', md: '14px' },
     height: { base: '88px', sm: '64px', md: '64px' },
   },
+  bodySize: {
+    width: '100%',
+    padding: { base: '0 5vw', sm: '0 5vw', md: '0 10vw' },
+  },
   blog: {
     h2: {
       fontWeight: 'bold',
-      margin: '80px 0 32px',
+      margin: '48px 0 32px',
       fontSize: '24px',
       lineHeight: '36px',
       '&::after': {
