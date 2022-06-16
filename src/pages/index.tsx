@@ -1,5 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react';
 
+import ArticleTweetBtn from 'components/ui-elements/ArticleTweetBtn';
+import ToAuthorBnr from 'components/ui-elements/ToAuthorBnr';
 import Article from 'components/ui-parts/Article';
 import ArticleListHead from 'components/ui-parts/ArticleListHead';
 import Card from 'components/ui-parts/Card';
@@ -53,7 +55,7 @@ const Index: NextPage<Props> = ({
 
   return (
     <Layout tags={tags}>
-      <Box as="main" my="80px" w="90vw" mx="auto" maxW="1300px">
+      <Box as="main" my="80px" textStyle="bodySize">
         <Box mt="80px">
           <CardListTitle title="おすすめ記事" />
           <Flex
@@ -83,6 +85,8 @@ const Index: NextPage<Props> = ({
           </Box>
         ))}
       </Box>
+      <ToAuthorBnr />
+      <ArticleTweetBtn />
     </Layout>
   );
 };

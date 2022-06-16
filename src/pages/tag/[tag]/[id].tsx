@@ -1,46 +1,21 @@
-import { Box, Center, Flex } from '@chakra-ui/react';
-
-import Card from 'components/ui-parts/Card';
-import CardListTitle from 'components/ui-parts/CardListTitle';
-import Layout from 'components/ui-parts/Layout';
-import Pagination from 'components/ui-parts/Pagination';
 import { getBlogs, getTags, getTagsIdByName } from 'libs/apiClient';
 import { Blog } from 'types/blog';
 import { MicroCMSList } from 'types/microCMS';
 import { Tag } from 'types/tag';
 
+import { generatePage } from './index';
+
 import type { NextPage } from 'next';
 
 type Props = {
   blogData: MicroCMSList<Blog>;
-  tagName: string;
+  tagName: Tag;
   currentPage: string;
   tags: Tag[];
 };
 
-const Index: NextPage<Props> = ({ blogData, tagName, currentPage, tags }) => (
-  <Layout tags={tags}>
-    <Box as="main" mt="80px" w="90vw" mx="auto" maxW="1300px">
-      <CardListTitle title={`タグ：${tagName}`} />
-      <Flex
-        flexWrap="wrap"
-        justifyContent="space-between"
-        gap="40px 0"
-        mt="40px"
-      >
-        {blogData.contents.map((blog) => (
-          <Card blogData={blog} key={blog.id} />
-        ))}
-      </Flex>
-      <Center my="64px">
-        <Pagination
-          totalBlogCount={blogData.totalCount}
-          currentPageNumber={Number(currentPage)}
-        />
-      </Center>
-    </Box>
-  </Layout>
-);
+const Index: NextPage<Props> = ({ blogData, tagName, currentPage, tags }) =>
+  generatePage({ blogData, tagName, currentPage, tags });
 
 export const getStaticPaths = async () => {
   const microCMSTags = await getTags();
@@ -96,7 +71,7 @@ export const getStaticProps = async ({
   return {
     props: {
       blogData,
-      tagName: microCMSTag.contents[0].nameJa,
+      tagName: microCMSTag.contents[0],
       currentPage: params.id,
       tags: microCMSTags.contents,
     },
