@@ -45,10 +45,7 @@ type Props = {
 
 const Footer: VFC<Props> = ({ tags }) => (
   <Grid
-    w="90vw"
-    maxW="1300px"
-    mt="80px"
-    mx="auto"
+    textStyle="bodySize"
     templateRows={{ base: 'repeat(4)', md: 'repeat(1)' }}
     templateColumns={{ base: 'repeat(1)', md: 'repeat(5,1fr)' }}
     gap={5}
