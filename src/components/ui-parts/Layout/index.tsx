@@ -16,6 +16,7 @@ const Layout: VFC<Props> = ({ tags, children }) => (
     {children}
     <OriginalSpacer size="80px" />
     <Footer tags={tags} />
+    <OriginalSpacer size="32px" />
   </>
 );
 export default Layout;

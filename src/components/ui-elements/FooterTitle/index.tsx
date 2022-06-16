@@ -1,4 +1,4 @@
-import { Text } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { VFC } from 'react';
 
 type Props = {
@@ -6,22 +6,24 @@ type Props = {
 };
 
 const footerTitle: VFC<Props> = ({ title }) => (
-  <Text
+  <Box
     display="flex"
     alignItems="center"
-    mb="26px"
-    textStyle="blog.h3"
+    fontSize="20px"
+    fontWeight="bold"
+    position="relative"
     _before={{
       content: '""',
-      w: '8px',
+      display: 'block',
+      w: '12px',
       h: '1px',
       bg: 'text',
-      display: 'block',
-      mr: '12px',
+      position: 'absolute',
+      inset: 'auto 0 auto -20px',
     }}
   >
     {title}
-  </Text>
+  </Box>
 );
 
 export default footerTitle;
