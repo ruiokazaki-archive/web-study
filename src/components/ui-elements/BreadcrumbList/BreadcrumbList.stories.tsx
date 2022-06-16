@@ -8,5 +8,5 @@ export default {
 } as ComponentMeta<typeof BreadcrumbList>;
 
 export const Default1: ComponentStory<typeof BreadcrumbList> = () => (
-  <BreadcrumbList></BreadcrumbList>
+  <BreadcrumbList data={[{ name: 'test', url: 'test' }]} />
 );
