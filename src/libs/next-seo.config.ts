@@ -1,5 +1,5 @@
 export default {
-  titleTemplate: '%s｜うぇぶスタ',
+  titleTemplate: 'うぇぶスタ | %s',
   defaultTitle: 'うぇぶスタ',
   additionalMetaTags: [
     {
@@ -12,14 +12,21 @@ export default {
     },
   ],
   openGraph: {
-    url: 'https://hogehoge.com/',
     type: 'website',
+    description: '専門学生6人が勉強に役立つ情報を発信していきます！',
+    url: 'https://web-study.blog',
     locale: 'ja_JP',
+    title: 'うぇぶスタ',
     site_name: 'うぇぶスタ',
+    images: [
+      {
+        url: 'https://images.microcms-assets.io/assets/d9db883bc929477a9cbafcb351fa25df/71d3db722f4e46de8e9c733fe820310f/ws_01-02.png',
+        type: 'image/png',
+      },
+    ],
   },
   twitter: {
     handle: '@web_ecc',
-    // site: '@fugafuga',
-    cardType: 'summary_large_image',
+    cardType: 'ssummary_large_image',
   },
 };
