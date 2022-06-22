@@ -7,7 +7,7 @@ import CardDate from 'components/ui-elements/CardDate';
 import { Blog } from 'types/blog';
 
 type Props = {
-  blogData: Pick<Blog, 'id' | 'title' | 'author' | 'thumbnail' | 'createdAt'>;
+  blogData: Pick<Blog, 'id' | 'title' | 'author' | 'thumbnail' | 'publishedAt'>;
 };
 
 const Card: VFC<Props> = ({ blogData }) => (
@@ -41,7 +41,9 @@ const Card: VFC<Props> = ({ blogData }) => (
         gap="16px"
         p="16px"
       >
-        <CardDate>{blogData.createdAt}</CardDate>
+        <CardDate>
+          {blogData.publishedAt.slice(0, 10).replace(/-/g, '.')}
+        </CardDate>
         <Heading as="h3" height="56px">
           {blogData.title}
         </Heading>

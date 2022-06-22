@@ -1,5 +1,5 @@
 export default {
-  titleTemplate: 'うぇぶスタ | %s',
+  titleTemplate: '%s | うぇぶスタ',
   defaultTitle: 'うぇぶスタ',
   additionalMetaTags: [
     {

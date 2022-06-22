@@ -10,7 +10,7 @@ type Props = {
 
 const ArticleHead: VFC<Props> = ({ data }) => (
   <>
-    <Text as="span">{data.publishedAt}</Text>
+    <Text as="span">{data.publishedAt.slice(0, 10).replace(/-/g, '.')}</Text>
     <Heading as="h2" m="16px 0 12px" fontSize="32px">
       {data.title}
     </Heading>
