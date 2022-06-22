@@ -32,26 +32,28 @@ export const generatePage = ({
   return (
     <Layout tags={tags}>
       <BreadcrumbList data={breadcrumbData} />
-      <Box as="main" mt="80px" textStyle="bodySize">
-        <CardListTitle title="ブログ一覧" />
-        <Flex
-          flexWrap="wrap"
-          justifyContent="space-between"
-          gap="40px 0"
-          mt="40px"
-        >
-          {blogData.contents.map((blog) => (
-            <Card blogData={blog} key={blog.id} />
-          ))}
-        </Flex>
-        <Center mt="64px">
-          <Pagination
-            totalBlogCount={blogData.totalCount}
-            currentPageNumber={
-              currentPage !== undefined ? Number(currentPage) : 1
-            }
-          />
-        </Center>
+      <Box as="main" mt="80px">
+        <Box textStyle="bodySize">
+          <CardListTitle title="ブログ一覧" />
+          <Flex
+            flexWrap="wrap"
+            justifyContent="space-between"
+            gap="40px 0"
+            mt="40px"
+          >
+            {blogData.contents.map((blog) => (
+              <Card blogData={blog} key={blog.id} />
+            ))}
+          </Flex>
+          <Center mt="64px">
+            <Pagination
+              totalBlogCount={blogData.totalCount}
+              currentPageNumber={
+                currentPage !== undefined ? Number(currentPage) : 1
+              }
+            />
+          </Center>
+        </Box>
       </Box>
     </Layout>
   );

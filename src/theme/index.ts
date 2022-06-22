@@ -18,8 +18,9 @@ const textStyles = {
     height: { base: '88px', sm: '64px', md: '64px' },
   },
   bodySize: {
-    width: '100%',
-    padding: { base: '0 5vw', sm: '0 5vw', md: '0 10vw' },
+    width: { base: '90vw', sm: '90vw', md: '80vw' },
+    maxWidth: '1280px',
+    margin: '0 auto',
   },
   blog: {
     h2: {
