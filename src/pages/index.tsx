@@ -1,11 +1,13 @@
 import { Box, Flex } from '@chakra-ui/react';
 
 import ArticleTweetBtn from 'components/ui-elements/ArticleTweetBtn';
+import OriginalSpacer from 'components/ui-elements/OriginalSpacer';
 import ToAuthorBnr from 'components/ui-elements/ToAuthorBnr';
 import Article from 'components/ui-parts/Article';
 import ArticleListHead from 'components/ui-parts/ArticleListHead';
 import Card from 'components/ui-parts/Card';
 import CardListTitle from 'components/ui-parts/CardListTitle';
+import FirstView from 'components/ui-parts/FirstView';
 import Layout from 'components/ui-parts/Layout';
 import { getBlogs, getRcmBlogs, getTags } from 'libs/apiClient';
 import { Blog } from 'types/blog';
@@ -54,42 +56,46 @@ const Index: NextPage<Props> = ({
   ];
 
   return (
-    <Layout tags={tags}>
-      <Box as="main" my="80px">
-        <Box textStyle="bodySize">
-          <Box mt="80px">
-            <CardListTitle title="おすすめ記事" />
-            <Flex
-              flexWrap="wrap"
-              justifyContent="space-between"
-              gap="40px 0"
-              mt="40px"
-            >
-              {recommendArticles.map((blog) => (
-                <Article blogData={blog} key={blog.id} />
-              ))}
-            </Flex>
-          </Box>
-          {contents.map(({ title, articles, category }) => (
-            <Box mt="80px" key={title}>
-              <ArticleListHead title={title} category={category} />
+    <>
+      <FirstView />
+      <OriginalSpacer size="80px" head />
+      <Layout tags={tags}>
+        <Box as="main" my="80px">
+          <Box textStyle="bodySize">
+            <Box mt="80px">
+              <CardListTitle title="おすすめ記事" />
               <Flex
                 flexWrap="wrap"
                 justifyContent="space-between"
                 gap="40px 0"
                 mt="40px"
               >
-                {articles.map((blog) => (
-                  <Card blogData={blog} key={blog.id} />
+                {recommendArticles.map((blog) => (
+                  <Article blogData={blog} key={blog.id} />
                 ))}
               </Flex>
             </Box>
-          ))}
+            {contents.map(({ title, articles, category }) => (
+              <Box mt="80px" key={title}>
+                <ArticleListHead title={title} category={category} />
+                <Flex
+                  flexWrap="wrap"
+                  justifyContent="space-between"
+                  gap="40px 0"
+                  mt="40px"
+                >
+                  {articles.map((blog) => (
+                    <Card blogData={blog} key={blog.id} />
+                  ))}
+                </Flex>
+              </Box>
+            ))}
+          </Box>
         </Box>
-      </Box>
-      <ToAuthorBnr />
-      <ArticleTweetBtn />
-    </Layout>
+        <ToAuthorBnr />
+        <ArticleTweetBtn />
+      </Layout>
+    </>
   );
 };
 
