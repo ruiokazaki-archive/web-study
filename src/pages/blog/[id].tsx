@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import { NextSeo } from 'next-seo';
+import sanitizeHtml from 'sanitize-html';
 
 import ArticleHead from 'components/ui-elements/ArticleHead';
 import ArticleIndexLink from 'components/ui-elements/ArticleIndexLink';
@@ -97,6 +98,10 @@ export const getStaticProps = async ({
   }
 
   const microCMSTags = await getTags();
+
+  data.body = sanitizeHtml(data.body, {
+    allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
+  });
 
   return {
     props: {
