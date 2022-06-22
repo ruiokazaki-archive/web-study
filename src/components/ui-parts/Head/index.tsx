@@ -9,58 +9,62 @@ import OriginalSpacer from 'components/ui-elements/OriginalSpacer';
 const Head: VFC = () => (
   <Flex
     as="header"
-    justifyContent={{
-      base: 'space-around',
-      sm: 'space-between',
-      md: 'space-between',
-    }}
-    flexDirection={{ base: 'column', sm: 'row', md: 'row' }}
     w="100%"
     bg="#fff"
-    m="0 auto"
-    p={{ base: '8px 5vw', sm: '0 5vw', md: '0 10vw' }}
+    // m="0 auto"
+    // p={{ base: '8px 5vw', sm: '0 5vw', md: '0 10vw' }}
     textStyle="nav"
   >
     <Flex
-      as="nav"
-      justifyContent="space-between"
-      alignItems="center"
-      w="100%"
-      height={{ base: '20px', sm: 'auto', md: 'auto' }}
+      justifyContent={{
+        base: 'space-around',
+        sm: 'space-between',
+        md: 'space-between',
+      }}
+      flexDirection={{ base: 'column', sm: 'row', md: 'row' }}
+      textStyle="bodySize"
     >
-      <Logo />
-      <OriginalSpacer size="32px" horizontal />
-      <Box
-        as="p"
-        display={{ base: 'none', sm: 'none', md: 'flex' }}
-        alignItems={{ base: 'stretch', sm: 'center', md: 'center' }}
-        fontSize="13px"
-        sx={{
-          '&::before': {
-            content: "''",
-            display: 'block',
-            width: '12px',
-            height: '1px',
-            background: 'gray',
-            margin: '0 10px 0 0',
-          },
-          '&::after': {
-            content: "''",
-            display: 'block',
-            width: '12px',
-            height: '1px',
-            background: 'gray',
-            margin: '0 0 0 10px',
-          },
-        }}
+      <Flex
+        as="nav"
+        justifyContent="space-between"
+        alignItems="center"
+        w="100%"
+        height={{ base: '20px', sm: 'auto', md: 'auto' }}
       >
-        Web制作に関する情報を発信
-      </Box>
-      <Spacer />
-      <HeadLink />
+        <Logo />
+        <OriginalSpacer size="32px" horizontal />
+        <Box
+          as="p"
+          display={{ base: 'none', sm: 'none', md: 'flex' }}
+          alignItems={{ base: 'stretch', sm: 'center', md: 'center' }}
+          fontSize="13px"
+          sx={{
+            '&::before': {
+              content: "''",
+              display: 'block',
+              width: '12px',
+              height: '1px',
+              background: 'gray',
+              margin: '0 10px 0 0',
+            },
+            '&::after': {
+              content: "''",
+              display: 'block',
+              width: '12px',
+              height: '1px',
+              background: 'gray',
+              margin: '0 0 0 10px',
+            },
+          }}
+        >
+          Web制作に関する情報を発信
+        </Box>
+        <Spacer />
+        <HeadLink />
+      </Flex>
+      <OriginalSpacer size="5vw" horizontal head />
+      <HeadSearch />
     </Flex>
-    <OriginalSpacer size="5vw" horizontal head />
-    <HeadSearch />
   </Flex>
 );
 export default Head;

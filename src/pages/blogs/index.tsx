@@ -1,5 +1,6 @@
 import { Box, Center, Flex } from '@chakra-ui/react';
 
+import BreadcrumbList from 'components/ui-elements/BreadcrumbList';
 import Card from 'components/ui-parts/Card';
 import CardListTitle from 'components/ui-parts/CardListTitle';
 import Layout from 'components/ui-parts/Layout';
@@ -16,26 +17,50 @@ type Props = {
   tags: Tag[];
 };
 
-const Index: NextPage<Props> = ({ blogData, tags }) => (
-  <Layout tags={tags}>
-    <Box as="main" mt="80px" w="90vw" mx="auto" maxW="1300px">
-      <CardListTitle title="全ての投稿記事" />
-      <Flex
-        flexWrap="wrap"
-        justifyContent="space-between"
-        gap="40px 0"
-        mt="40px"
-      >
-        {blogData.contents.map((blog) => (
-          <Card blogData={blog} key={blog.id} />
-        ))}
-      </Flex>
-      <Center mt="64px">
-        <Pagination totalBlogCount={blogData.totalCount} />
-      </Center>
-    </Box>
-  </Layout>
-);
+export const generatePage = ({
+  blogData,
+  tags,
+  currentPage,
+}: Props & { currentPage?: string }) => {
+  const breadcrumbData = [
+    {
+      name: 'ブログ一覧',
+      url: 'blogs',
+    },
+  ];
+
+  return (
+    <Layout tags={tags}>
+      <BreadcrumbList data={breadcrumbData} />
+      <Box as="main" mt="80px">
+        <Box textStyle="bodySize">
+          <CardListTitle title="ブログ一覧" />
+          <Flex
+            flexWrap="wrap"
+            justifyContent="space-between"
+            gap="40px 0"
+            mt="40px"
+          >
+            {blogData.contents.map((blog) => (
+              <Card blogData={blog} key={blog.id} />
+            ))}
+          </Flex>
+          <Center mt="64px">
+            <Pagination
+              totalBlogCount={blogData.totalCount}
+              currentPageNumber={
+                currentPage !== undefined ? Number(currentPage) : 1
+              }
+            />
+          </Center>
+        </Box>
+      </Box>
+    </Layout>
+  );
+};
+
+const Index: NextPage<Props> = ({ blogData, tags }) =>
+  generatePage({ blogData, tags });
 
 export const getStaticProps = async () => {
   const blogData = await getBlogs();

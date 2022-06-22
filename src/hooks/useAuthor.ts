@@ -32,12 +32,15 @@ const useAuthorInfo = () => {
     kobayashi: '色彩・服飾',
   };
   const authorTexts: { [key in Author]: string } = {
-    kinoshita: '',
-    okazaki: '',
-    ryou: '',
+    kinoshita:
+      'Webデザインやグラフィックデザインの発信をする鳥。ゲームと水族館が好きです。絵も描くよ。',
+    okazaki:
+      'フロントエンド中心にコード書きます。邦ロックとアイスとカメラが好きです。',
+    ryou: '香港出身のリョウです。旅行とアニメが好きです。僕の夢は世界中のアイスを全部食べてみたい。',
     sato: 'フロントエンドと写真が好きなアイドルおたく',
-    suda: '',
-    kobayashi: '',
+    suda: 'ヒトと認知が好き。ソフトウェアデザインを専門に学習しています。趣味は野球観戦と本を読むことです。',
+    kobayashi:
+      '琵琶湖県出身。主にWebデザインについての発信をしていきます。実はWebデザイン学生からアパレル業界を目指しています。',
   };
   const authorChats: { [key in Author]: string } = {
     kinoshita: 'デザイナーのきのぴたは絵描きのゲーム廃人学生ニート侍',

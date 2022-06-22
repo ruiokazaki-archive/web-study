@@ -7,6 +7,17 @@ export default {
   component: FooterText,
 } as ComponentMeta<typeof FooterText>;
 
+const data = {
+  title: 'string',
+  contents: [
+    {
+      name: 'string',
+      url: 'string',
+    },
+  ],
+  id: 12,
+};
+
 export const Default1: ComponentStory<typeof FooterText> = () => (
-  <FooterText about="テスト" url="/test" />
+  <FooterText data={data} />
 );
