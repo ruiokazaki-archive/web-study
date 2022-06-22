@@ -11,11 +11,11 @@ export default {
 
 const blogData: Pick<
   Blog,
-  'id' | 'title' | 'author' | 'thumbnail' | 'createdAt'
+  'id' | 'title' | 'author' | 'thumbnail' | 'publishedAt'
 > = {
   id: '1',
   title: '俺たちがテニスの王子様です。越前リョーマです。',
-  createdAt: '2020.02.06',
+  publishedAt: '2020.02.06',
   author: ['okazaki'],
   thumbnail: {
     url: 'https://www.blky.me/wp/wp-content/uploads/2019/01/goodnotes-5-eyecatch.jpg',
