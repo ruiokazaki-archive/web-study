@@ -1,6 +1,9 @@
 import { Box } from '@chakra-ui/react';
+import cheerio from 'cheerio';
+import hljs from 'highlight.js';
 import { NextSeo } from 'next-seo';
 import sanitizeHtml from 'sanitize-html';
+import 'highlight.js/styles/night-owl.css';
 
 import ArticleHead from 'components/ui-elements/ArticleHead';
 import ArticleIndexLink from 'components/ui-elements/ArticleIndexLink';
@@ -102,6 +105,16 @@ export const getStaticProps = async ({
   data.body = sanitizeHtml(data.body, {
     allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
   });
+
+  const $ = cheerio.load(data.body);
+
+  $('pre code').each((_, elm) => {
+    const result = hljs.highlightAuto($(elm).text());
+    $(elm).html(result.value);
+    $(elm).addClass('hljs');
+  });
+
+  data.body = $.html();
 
   return {
     props: {
