@@ -1,6 +1,5 @@
 import { Box } from '@chakra-ui/react';
 import { VFC } from 'react';
-import sanitizeHtml from 'sanitize-html';
 
 import ArticleAuthor from 'components/ui-elements/ArticleAuthor';
 import ArticleTags from 'components/ui-elements/ArticleTags';
@@ -18,9 +17,7 @@ const ArticleBody: VFC<Props> = ({ data }) => (
       dangerouslySetInnerHTML={{
         // eslint-disable-next-line max-len
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-        __html: sanitizeHtml(data.body, {
-          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
-        }),
+        __html: data.body,
       }}
     />
     <OriginalSpacer size="64px" />
