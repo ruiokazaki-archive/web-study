@@ -28,7 +28,7 @@
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.1.5",
     "aspida": "^1.9.1",
-    "cheerio": "^1.0.0",
+    "cheerio": "0.22.0",
     "framer-motion": "^4.0.3",
     "highlight.js": "^11.5.1",
     "microcms-js-sdk": "^2.0.0",
