@@ -10,7 +10,7 @@ import OriginalSpacer from 'components/ui-elements/OriginalSpacer';
 const FirstView: VFC = () => (
   <Flex
     w="100%"
-    h={{ base: 'auto', sm: '60vh', md: '80vh' }}
+    h={{ base: 'auto', sm: '60vh', md: '70vh' }}
     bg="#D2E9FF"
     position="relative"
     sx={{

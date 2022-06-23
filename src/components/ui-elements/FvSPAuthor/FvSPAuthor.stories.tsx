@@ -7,6 +7,4 @@ export default {
   component: FvSPAuthor,
 } as ComponentMeta<typeof FvSPAuthor>;
 
-export const Default1: ComponentStory<typeof FvSPAuthor> = () => (
-  <FvSPAuthor></FvSPAuthor>
-);
+export const Default1: ComponentStory<typeof FvSPAuthor> = () => <FvSPAuthor />;

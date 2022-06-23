@@ -1,7 +1,24 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, keyframes } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import React, { VFC } from 'react';
 
 import useAuthorInfo from 'hooks/useAuthor';
+
+const chatKeyframes = keyframes`
+  0% { opacity:0; }
+  100% { opacity:1; transform:translateY(0); }
+`;
+
+const iconKeyframes = keyframes`
+  0% { opacity:0; }
+  100% { opacity:1; }
+`;
+
+const chatAnimation = (i: number) =>
+  `${chatKeyframes} 0.3s ${i + 1}s ease-in-out forwards`;
+
+const iconAnimation = (i: number) =>
+  `${iconKeyframes} 0.2s ${i + 1}s ease-in-out forwards`;
 
 const FvSPAuthor: VFC = () => {
   const { getAllAuthorInfo } = useAuthorInfo();
@@ -24,7 +41,8 @@ const FvSPAuthor: VFC = () => {
           h="80px"
         >
           <Flex
-            as="p"
+            as={motion.p}
+            animation={chatAnimation(i)}
             justifyContent="center"
             alignItems="center"
             w="calc(100% - 96px)"
@@ -36,6 +54,7 @@ const FvSPAuthor: VFC = () => {
             fontWeight="bold"
             fontSize="14px"
             position="relative"
+            opacity="0"
             sx={{
               '&::after': {
                 content: '""',
@@ -53,22 +72,20 @@ const FvSPAuthor: VFC = () => {
               (1 + i) % 2 === 0
                 ? {
                     order: 1,
+                    transform: 'translateX(8px)',
                   }
                 : {
                     order: 2,
-                    // '&::after': {
-                    //   borderColor: `transparent ${item.authorColor} transparent transparent`,
-                    // },
+                    transform: 'translateX(-8px)',
                   }
             }
           >
             {item.authorChat}
           </Flex>
           <Box
-            as={item.authorIcon}
-            width="80px"
-            height="80px"
-            borderRadius="9999px"
+            as={motion.div}
+            animation={iconAnimation(i)}
+            opacity="0"
             style={
               (1 + i) % 2 === 0
                 ? {
@@ -78,7 +95,14 @@ const FvSPAuthor: VFC = () => {
                     order: 1,
                   }
             }
-          />
+          >
+            <Box
+              as={item.authorIcon}
+              width="80px"
+              height="80px"
+              borderRadius="9999px"
+            />
+          </Box>
         </Flex>
       ))}
     </Flex>

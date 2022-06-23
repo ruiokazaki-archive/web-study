@@ -7,6 +7,4 @@ export default {
   component: FvAuthor,
 } as ComponentMeta<typeof FvAuthor>;
 
-export const Default1: ComponentStory<typeof FvAuthor> = () => (
-  <FvAuthor></FvAuthor>
-);
+export const Default1: ComponentStory<typeof FvAuthor> = () => <FvAuthor />;

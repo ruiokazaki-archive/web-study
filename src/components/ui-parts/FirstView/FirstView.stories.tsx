@@ -7,6 +7,4 @@ export default {
   component: FirstView,
 } as ComponentMeta<typeof FirstView>;
 
-export const Default1: ComponentStory<typeof FirstView> = () => (
-  <FirstView></FirstView>
-);
+export const Default1: ComponentStory<typeof FirstView> = () => <FirstView />;
