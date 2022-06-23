@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Box } from '@chakra-ui/react';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js';
@@ -106,14 +107,20 @@ export const getStaticProps = async ({
     allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
   });
 
-  const $ = cheerio.load(data.body);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+  const $ = cheerio.load(data.body) as any;
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   $('pre code').each((_, elm) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access,  @typescript-eslint/no-unsafe-call
     const result = hljs.highlightAuto($(elm).text());
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access,  @typescript-eslint/no-unsafe-call
     $(elm).html(result.value);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     $(elm).addClass('hljs');
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
   data.body = $.html();
 
   return {
