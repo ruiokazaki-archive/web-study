@@ -61,10 +61,10 @@ const textStyles = {
       lineHeight: '32px',
     },
     pre: {
+      fontSize: '13px',
+      lineHeight: '19.5px',
       color: '#fff',
-      background: '#172848',
       margin: '24px 0',
-      padding: '24px 20px',
     },
     a: {
       color: 'main',
