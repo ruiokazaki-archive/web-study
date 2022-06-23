@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "mc": "sh makeComponentsFile.sh",
     "sb": "start-storybook -p 6006",
@@ -27,13 +28,17 @@
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.1.5",
     "aspida": "^1.9.1",
+    "cheerio": "^1.0.0-rc.11",
     "framer-motion": "^4.0.3",
+    "highlight.js": "^11.5.1",
     "microcms-js-sdk": "^2.0.0",
     "next": "^11.1.4",
     "next-seo": "^5.4.0",
+    "next-sitemap": "^3.0.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-share": "^4.4.0"
+    "react-share": "^4.4.0",
+    "sanitize-html": "^2.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
@@ -52,6 +57,7 @@
     "@types/prettier": "^2.6.0",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "@types/sanitize-html": "^2.6.2",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
     "babel-loader": "^8.2.5",
