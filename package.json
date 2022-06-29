@@ -7,8 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
-    "build": "next build",
-    "postbuild": "next-sitemap",
+    "build": "next build && next export && next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "mc": "sh makeComponentsFile.sh",
     "sb": "start-storybook -p 6006",
