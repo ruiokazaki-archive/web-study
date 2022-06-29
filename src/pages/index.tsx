@@ -1,4 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react';
+import { NextSeo } from 'next-seo';
 
 import ArticleTweetBtn from 'components/ui-elements/ArticleTweetBtn';
 import OriginalSpacer from 'components/ui-elements/OriginalSpacer';
@@ -58,6 +59,12 @@ const Index: NextPage<Props> = ({
   return (
     <>
       <FirstView />
+      <NextSeo
+        description="専門学生6人が勉強に役立つ情報を発信していきます！"
+        openGraph={{
+          url: 'https://web-study.blog',
+        }}
+      />
       <OriginalSpacer size="80px" head />
       <Layout tags={tags}>
         <Box as="main" my="80px">

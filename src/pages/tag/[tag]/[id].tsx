@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import { getBlogs, getTags, getTagsIdByName } from 'libs/apiClient';
 import { Blog } from 'types/blog';
 import { MicroCMSList } from 'types/microCMS';
@@ -14,8 +16,11 @@ type Props = {
   tags: Tag[];
 };
 
-const Index: NextPage<Props> = ({ blogData, tagName, currentPage, tags }) =>
-  generatePage({ blogData, tagName, currentPage, tags });
+const Index: NextPage<Props> = ({ blogData, tagName, currentPage, tags }) => {
+  const router = useRouter();
+
+  return generatePage({ blogData, tagName, currentPage, tags, router });
+};
 
 export const getStaticPaths = async () => {
   const microCMSTags = await getTags();
