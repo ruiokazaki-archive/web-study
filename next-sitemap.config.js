@@ -6,4 +6,4 @@ const config = {
   sitemapSize: 7000,
 };
 
-module.exports = config;
+export default config;
