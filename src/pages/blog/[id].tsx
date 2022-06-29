@@ -3,6 +3,7 @@ import { Box } from '@chakra-ui/react';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js';
 import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 import sanitizeHtml from 'sanitize-html';
 import 'highlight.js/styles/night-owl.css';
 
@@ -39,6 +40,8 @@ const Article: NextPage<Props> = ({ blogData, rcmData, tags }) => {
     },
   ];
 
+  const router = useRouter();
+
   return (
     <Layout tags={tags}>
       <NextSeo
@@ -46,6 +49,18 @@ const Article: NextPage<Props> = ({ blogData, rcmData, tags }) => {
         description={`この記事では${blogData.tags
           .map((item) => item.nameJa)
           .join('、')}について掲載しています！`}
+        openGraph={{
+          url: `https://web-study.blog${
+            router.asPath || window.location.pathname
+          }`,
+          images: [
+            {
+              url: blogData.thumbnail.url,
+              width: blogData.thumbnail.width,
+              height: blogData.thumbnail.height,
+            },
+          ],
+        }}
       />
       <BreadcrumbList data={breadcrumbData} />
       <Box

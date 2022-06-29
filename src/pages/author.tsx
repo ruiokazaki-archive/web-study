@@ -27,6 +27,9 @@ const AuthorList: NextPage<Props> = ({ tags }) => {
       <NextSeo
         title="メンバー紹介"
         description="うぇぶスタの記事を書いているゆかいな仲間たちです！"
+        openGraph={{
+          url: 'https://web-study.blog/author',
+        }}
       />
       <Flex
         as="h2"

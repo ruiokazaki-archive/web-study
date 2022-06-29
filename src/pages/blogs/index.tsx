@@ -1,4 +1,6 @@
 import { Box, Center, Flex } from '@chakra-ui/react';
+import { NextSeo } from 'next-seo';
+import { NextRouter, useRouter } from 'next/router';
 
 import BreadcrumbList from 'components/ui-elements/BreadcrumbList';
 import Card from 'components/ui-parts/Card';
@@ -21,7 +23,8 @@ export const generatePage = ({
   blogData,
   tags,
   currentPage,
-}: Props & { currentPage?: string }) => {
+  router,
+}: Props & { currentPage?: string; router: NextRouter }) => {
   const breadcrumbData = [
     {
       name: 'ブログ一覧',
@@ -31,6 +34,15 @@ export const generatePage = ({
 
   return (
     <Layout tags={tags}>
+      <NextSeo
+        title="全ての投稿記事一覧"
+        description="全ての投稿記事一覧です。"
+        openGraph={{
+          url: `https://web-study.blog${
+            router.asPath || window.location.pathname
+          }`,
+        }}
+      />
       <BreadcrumbList data={breadcrumbData} />
       <Box as="main" mt="80px">
         <Box textStyle="bodySize">
@@ -59,8 +71,11 @@ export const generatePage = ({
   );
 };
 
-const Index: NextPage<Props> = ({ blogData, tags }) =>
-  generatePage({ blogData, tags });
+const Index: NextPage<Props> = ({ blogData, tags }) => {
+  const router = useRouter();
+
+  return generatePage({ blogData, tags, router });
+};
 
 export const getStaticProps = async () => {
   const blogData = await getBlogs();
