@@ -1,4 +1,7 @@
 import { Box, Center, Flex } from '@chakra-ui/react';
+import { NextSeo } from 'next-seo';
+import { NextRouter, useRouter } from 'next/router';
+import React from 'react';
 
 import BreadcrumbList from 'components/ui-elements/BreadcrumbList';
 import Card from 'components/ui-parts/Card';
@@ -24,7 +27,8 @@ export const generatePage = ({
   category,
   tags,
   currentPage,
-}: Props & { currentPage?: string }) => {
+  router,
+}: Props & { currentPage?: string; router: NextRouter }) => {
   const breadcrumbData = [
     {
       name: categoryCorrespondenceTable[category],
@@ -34,6 +38,15 @@ export const generatePage = ({
 
   return (
     <Layout tags={tags}>
+      <NextSeo
+        title={`${categoryCorrespondenceTable[category]}の記事一覧`}
+        description={`カテゴリ：${categoryCorrespondenceTable[category]}の記事一覧です。`}
+        openGraph={{
+          url: `https://web-study.blog${
+            router.asPath || window.location.pathname
+          }`,
+        }}
+      />
       <BreadcrumbList data={breadcrumbData} />
       <Box as="main" mt="80px">
         <Box textStyle="bodySize">
@@ -62,9 +75,11 @@ export const generatePage = ({
   );
 };
 
-const Index: NextPage<Props> = ({ blogData, category, tags }) =>
-  generatePage({ blogData, category, tags });
+const Index: NextPage<Props> = ({ blogData, category, tags }) => {
+  const router = useRouter();
 
+  return generatePage({ blogData, category, tags, router });
+};
 export const getStaticPaths = () => {
   const categories = ['design', 'engineer', 'column'];
 

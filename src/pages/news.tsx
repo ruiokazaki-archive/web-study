@@ -15,8 +15,13 @@ type Props = {
 
 const news: NextPage<Props> = ({ newsData, tagsData }) => (
   <Layout tags={tagsData}>
-    <NextSeo title="うぇぶスタNEWS" description="Web制作に関する情報を発信" />
-
+    <NextSeo
+      title="うぇぶスタNEWS"
+      description="Web制作に関する情報を発信"
+      openGraph={{
+        url: 'https://web-study.blog/news',
+      }}
+    />
     <Box
       w="90vw"
       maxW="1200px"
