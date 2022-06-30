@@ -11,6 +11,8 @@ const FirstView: VFC = () => (
   <Flex
     w="100%"
     h={{ base: 'auto', sm: '60vh', md: '70vh' }}
+    minH={{ base: 'auto', sm: 'auto', md: '616px' }}
+    maxH={{ base: 'auto', sm: 'auto', md: '800px' }}
     bg="#D2E9FF"
     position="relative"
     sx={{
