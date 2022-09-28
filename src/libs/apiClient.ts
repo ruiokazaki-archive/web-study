@@ -164,3 +164,21 @@ export const getTagsIdByName = (name: string) => {
     query: { limit: 1, filters: `nameEn[equals]${name}` },
   });
 };
+
+export const getSearchBlogs = ({
+  limit,
+  pageNumber,
+  q,
+}: {
+  limit?: number;
+  pageNumber?: number;
+  q: string;
+}) =>
+  fetchClient.blogs.$get({
+    config,
+    query: {
+      limit: limit || defaultValue.limit,
+      offset: (pageNumber - 1) * 12 || defaultValue.offset,
+      q,
+    },
+  });

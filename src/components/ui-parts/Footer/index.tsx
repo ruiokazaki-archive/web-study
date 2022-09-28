@@ -17,10 +17,6 @@ const footerItems = [
         url: '/news',
       },
       {
-        name: '学習相談はこちらから',
-        url: '/',
-      },
-      {
         name: 'メンバー紹介',
         url: '/author',
       },
@@ -64,18 +60,14 @@ const Footer: VFC<Props> = ({ tags }) => (
         <OriginalSpacer size="56px" footLogo />
       </Box>
       {footerItems.map((item) => (
-        <>
-          <Box
-            key={item.id}
-            w={{ base: 'auto', sm: '30%', md: 'fit-content' }}
-            minW="120px"
-          >
+        <Box key={item.id}>
+          <Box w={{ base: 'auto', sm: '30%', md: 'fit-content' }} minW="120px">
             <FooterTitle title={item.title} />
             <OriginalSpacer size="32px" />
             <FooterText data={item} />
           </Box>
           <OriginalSpacer size="40px" footContents />
-        </>
+        </Box>
       ))}
       <Box w={{ base: 'auto', sm: '40%', md: '35%' }}>
         <FooterTitle title="タグ" />
