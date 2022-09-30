@@ -27,6 +27,7 @@ export default {
   },
   twitter: {
     handle: '@web_ecc',
-    cardType: 'twitter:card',
+    site: '@web_ecc',
+    cardType: 'summary_large_image',
   },
 };
