@@ -8,7 +8,7 @@ type tagsProps = {
 };
 
 const ArticleListLink: VFC<tagsProps> = ({ tagData }) => (
-  <Flex as="ul" gap="8px">
+  <Flex as="ul" gap="8px" flexWrap="wrap">
     {tagData.tags.map((item) => (
       <Flex as="li" key={item.nameEn}>
         <Flex
