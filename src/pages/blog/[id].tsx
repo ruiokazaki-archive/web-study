@@ -55,9 +55,10 @@ const Article: NextPage<Props> = ({ blogData, rcmData, tags }) => {
           }`,
           images: [
             {
-              url: blogData.thumbnail.url,
-              width: blogData.thumbnail.width,
-              height: blogData.thumbnail.height,
+              url: `${blogData.thumbnail.url}?w=1200`,
+              width: 1200,
+              alt: 'title' in blogData ? blogData.title : 'No Title',
+              type: 'image/jpeg',
             },
           ],
         }}
