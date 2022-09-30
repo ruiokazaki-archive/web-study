@@ -20,6 +20,30 @@ const chatAnimation = (i: number) =>
 const iconAnimation = (i: number) =>
   `${iconKeyframes} 0.2s ${i + 1}s ease-in-out forwards`;
 
+const isIconLeft = (index: number) => index % 2 === 0;
+
+const judgmentTriangleStyle = ({
+  isLeft,
+  authorColor,
+}: {
+  isLeft: boolean;
+  authorColor: string;
+}) => {
+  if (isLeft) {
+    return {
+      borderWidth: '8px 13.9px 8px 0',
+      borderColor: `transparent ${authorColor} transparent transparent`,
+      inset: 'auto auto 12px -12px',
+    };
+  }
+
+  return {
+    borderWidth: '8px 0 8px 13.9px',
+    borderColor: `transparent transparent transparent ${authorColor}`,
+    inset: 'auto -12px 12px auto',
+  };
+};
+
 const FvSPAuthor: VFC = () => {
   const { getAllAuthorInfo } = useAuthorInfo();
   const authorInfo = getAllAuthorInfo();
@@ -62,23 +86,15 @@ const FvSPAuthor: VFC = () => {
                 width: 0,
                 height: 0,
                 borderStyle: 'solid',
-                borderWidth: '8px 0 8px 13.9px',
-                borderColor: `transparent transparent transparent ${item.authorColor}`,
                 position: 'absolute',
-                inset: 'auto -12px 12px auto',
+                ...judgmentTriangleStyle({
+                  isLeft: isIconLeft(i),
+                  authorColor: item.authorColor,
+                }),
               },
             }}
-            style={
-              (1 + i) % 2 === 0
-                ? {
-                    order: 1,
-                    transform: 'translateX(8px)',
-                  }
-                : {
-                    order: 2,
-                    transform: 'translateX(-8px)',
-                  }
-            }
+            order={isIconLeft(i) ? 2 : 1}
+            transform={isIconLeft(i) ? 'translateX(-8px)' : 'translateX(8px)'}
           >
             {item.authorChat}
           </Flex>
@@ -86,15 +102,7 @@ const FvSPAuthor: VFC = () => {
             as={motion.div}
             animation={iconAnimation(i)}
             opacity="0"
-            style={
-              (1 + i) % 2 === 0
-                ? {
-                    order: 2,
-                  }
-                : {
-                    order: 1,
-                  }
-            }
+            order={isIconLeft(i) ? 1 : 2}
           >
             <Box
               as={item.authorIcon}
