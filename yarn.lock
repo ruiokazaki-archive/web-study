@@ -3418,6 +3418,11 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/cheerio@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.0.tgz#4e308bf0e223c632b3de3adf521139dc7aa51e34"
+  integrity sha512-dVL3RISC1jdrXilyqmPIga6LmjHwrDbWQoUyHuf/bGjP+HiNtyFJ3Gga1FCu55UYOqbuUGLPzkGkcsplkpSm8Q==
+
 "@types/color-convert@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/color-convert/-/color-convert-2.0.0.tgz#8f5ee6b9e863dcbee5703f5a517ffb13d3ea4e22"
@@ -12906,6 +12911,11 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zenn-content-css@^0.1.128:
+  version "0.1.128"
+  resolved "https://registry.yarnpkg.com/zenn-content-css/-/zenn-content-css-0.1.128.tgz#d4371d97d185368b9939461a470543fe7e8bb34b"
+  integrity sha512-Hog/THMtqm2JFlLLuW0U3d5q4w1x90Vx3EjfSwcsn8qd2PbGOu+3wnD3qjPEMfY0IaD9/v53zLwvuWpZvmzo8g==
 
 zwitch@^1.0.0:
   version "1.0.5"
