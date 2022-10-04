@@ -66,14 +66,16 @@ const Article: NextPage<Props> = ({ blogData, rcmData, tags }) => {
       <BreadcrumbList data={breadcrumbData} />
       <Box
         w={{
-          base: '90vw',
-          sm: '80vw',
-          md: '70vw',
+          base: '100%',
+          sm: '80%',
+          md: '70%',
         }}
         maxW="960px"
         m="72px auto 0"
       >
-        <ArticleHead data={blogData} />
+        <Box px={{ base: '20px', sm: '0' }}>
+          <ArticleHead data={blogData} />
+        </Box>
         <OriginalSpacer size="48px" />
         <Box as="img" src={blogData.thumbnail.url} w="100%" />
         <ArticleBody data={blogData} />
