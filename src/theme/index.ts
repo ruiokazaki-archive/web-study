@@ -25,65 +25,29 @@ const textStyles = {
   blog: {
     h2: {
       fontWeight: 'bold',
-      margin: '48px 0 32px',
-      fontSize: '24px',
-      lineHeight: '36px',
       '&::after': {
         content: "''",
         display: 'block',
         width: '100%',
         height: '1px',
         background: '#E6E6E6',
-        margin: '16px 0 0 ',
+        marginTop: '8px',
       },
     },
     h3: {
-      fontSize: '20px',
-      lineHeight: '36px',
-      margin: '40px 0 24px',
       fontWeight: 'bold',
     },
     h4: {
-      fontSize: '16px',
-      lineHeight: '24px',
-      margin: '16px 0 8px',
       fontWeight: 'bold',
     },
     p: {
       fontSize: '16px',
-      lineHeight: '32px',
       code: {
-        padding: '0.2em 0.4em',
-        background: '#215aa012',
-        fontSize: '.85em',
-        borderRadius: '4px',
-        verticalAlign: '0.08em',
         marginInline: '2px',
       },
     },
-    ul: {
-      background: '#F5F5F5',
-      margin: '24px 0 32px',
-      padding: '40px 40px 40px 56px',
-    },
-    ol: {
-      background: '#F5F5F5',
-      margin: '24px 0 32px',
-      padding: '40px 40px 40px 56px',
-    },
-    blockquote: {
-      background: '#F5F5F5',
-      margin: '24px 0 32px',
-      padding: '40px 40px 40px 56px',
-    },
     li: {
       lineHeight: '32px',
-    },
-    pre: {
-      fontSize: '13px',
-      lineHeight: '19.5px',
-      color: '#fff',
-      margin: '24px 0',
     },
     a: {
       color: 'main',
