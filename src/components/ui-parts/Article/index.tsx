@@ -31,7 +31,7 @@ const Article: VFC<Props> = ({ blogData }) => (
         src={blogData.thumbnail.url}
         objectFit="cover"
         sx={{
-          aspectRatio: '541 / 272.11',
+          aspectRatio: '16 / 9',
         }}
       />
       <Flex
