@@ -32,7 +32,7 @@ const Card: VFC<Props> = ({ blogData }) => (
         alt={`${blogData.title}のサムネイル`}
         objectFit="cover"
         sx={{
-          aspectRatio: '541 / 272.11',
+          aspectRatio: '16 / 9',
         }}
       />
       <Flex
