@@ -20,7 +20,7 @@ export default {
     site_name: 'うぇぶスタ',
     images: [
       {
-        url: 'https://images.microcms-assets.io/assets/d9db883bc929477a9cbafcb351fa25df/71d3db722f4e46de8e9c733fe820310f/ws_01-02.png',
+        url: 'https://images.microcms-assets.io/assets/d9db883bc929477a9cbafcb351fa25df/74d33df20205459eaf21b98418a14a82/fv.jpeg',
         type: 'image/png',
       },
     ],
